@@ -22,13 +22,10 @@ const Movie = (props) => {
     }, [id]);
 
     const handleFavoriteClick = () => {
-
         addToFavorites({
             id: movie.id,
             title: movie.title
         });
-
-        push('/movies');
     }
 
     const handleDeleteClick = () => {
