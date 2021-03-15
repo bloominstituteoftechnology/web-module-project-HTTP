@@ -6,7 +6,6 @@ import Movie from './components/Movie';
 
 import MovieHeader from './components/MovieHeader';
 
-import AddMovieForm from './components/AddMovieForm';
 import EditMovieForm from './components/EditMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
 
@@ -31,9 +30,7 @@ const App = (props) => {
   }
 
   const addToFavorites = (movie) => {
-    if(!favoriteMovies.find(m => (m.id=== movie.id))) {
-        setFavoriteMovies([...favoriteMovies, {id:movie.id, title:movie.title}]);
-    }
+    
   }
 
   return (
@@ -41,6 +38,7 @@ const App = (props) => {
       <nav className="navbar navbar-dark bg-dark">
         <span className="navbar-brand" ><img width="40px" alt="" src="./Lambda-Logo-Red.png"/> HTTP / CRUD Module Project</span>
       </nav>
+
       <div className="container">
         <MovieHeader/>
         <div className="row ">
@@ -48,15 +46,10 @@ const App = (props) => {
         
           <Switch>
             <Route path="/movies/edit/:id">
-              <EditMovieForm setMovies={setMovies}/>
-            </Route>
-
-            <Route exact path="/movies/add">
-              <AddMovieForm setMovies={setMovies}/>
             </Route>
 
             <Route path="/movies/:id">
-              <Movie addToFavorites={addToFavorites} deleteMovie={deleteMovie}/>
+              <Movie/>
             </Route>
 
             <Route path="/movies">

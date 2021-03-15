@@ -25,106 +25,78 @@ CRUD applications are the foundation of most web applications. Being able to man
 - [ ] **IMPORTANT** If a test fails, use the test runner's error messages to find out why it is failing
 
 ### Task 2: Project Requirements
-#### The Episode Component
-> *This component displays a single episode worth of data. To test it, let's try our some different varieties on what we should pass into our component's props.*
+#### Editing a Movie
+> *Let's start by walking through the process of adding the routing, component and service calls need for resource updating*
 
-* [ ] Complete a test that shows the Episode component renders. Pass in the provided example episode data as a test prop.
-* [ ] Modify the test data to display a specific summary statement. Complete a test that shows that the summary value passed in to the Episode component displays as expected. **Use at least then 3 different types of expect statements to test the the existence of the summary value.**
-* [ ] The episode component displays a default value ('./stranger_things.png') when a image url is not provided. Create a new piece of test data with the image property set to `null`. Test that the alt tag of the image displayed is set to './stranger_things.png'.
+* [ ] First, we need to be able to navigate to the edit movie component. Add in the premade component used to edit a movie.
 
-### The Show Component
-> *This component holds all general information on our featured show. Here we will once again work with data props, mock a function for testing and rerender our component for a change in data.*
+* [ ] Next, we need to be able to load in the current movie's attributes into our local form state. Add in the code needed to retrieve the movie data of the passed in id when the component mounts.
 
-* [ ] Build an example data structure that contains the show data in the correct format. A show should contain a name, a summary and an array of seasons, each with a id, name and an (empty) list of episodes within them. Use console.logs within the client code if you need to to verify the structure of show data.
-* [ ] Test that the Show component renders when your test data is passed in through show prop and "none" is passed in through selectedSeason prop.
-* [ ] Test that the Loading component displays when null is passed into the show prop (look at the Loading component to see how to test for it's existence)
-* [ ] Test that when your test data is passed through the show prop, the same number of season select options appear as there are seasons within your test data.
-* [ ] Test that when an item is selected, the handleSelect function is called. Look at your code to see how to get access to the select DOM element and userEvent reference materials to see how to trigger a selection.
-* [ ] Test that the episode component DOES NOT render when the selectedSeason props is "none" and DOES render the episode component when the selectedSeason prop has a valid season index.
+* [ ] At this point, nothing happens when the edit form is submitted. Add in the service call need to update the server with our updated movie when the edit form is submit button is clicked.
 
-### The Display Component
-> *This component holds the state values of the application and handles api calls. In this component's tests, you work with mocking external modules and working with async / await / waitFor*
-* [ ] Test that the Display component renders without any passed in props.
-* [ ] Rebuild or copy the show test data element as used in the previous set of tests.
-* [ ] Test that when the fetch button is pressed, the show component will display. Make sure to account for the api call and change of state in building your test.
-* [ ] Test that when the fetch button is pressed, the amount of select options rendered is equal to the amount of seasons in your test data.
-* [ ] Notice the optional functional prop passed in to the Display component client code. Test that when the fetch button is pressed, this function is called.
+* [ ] Don't forget to make sure that your server data and your local state are in sync! Make any changes the edit route needed to modify global state within the edit form.
+
+* [ ] Now that we have access to setMovies, made sure the updated list of movies is saved to our global state.
+
+* [ ] Redirect the user to the currently edited movie's indivisual info page.
+
+### Deleting a Movie
+> *You added in a CRUD feature! Good job! Now let's get deleted squared away...*
+
+* [ ] Identify the component that holds the "button" needed for deletion. Add an event hanlder to that button.
+
+* [ ] Build your new event handler to make the request needed to delete the currentlt viewed movie. Observe what is returned from the request.
+
+* [ ] You will once again need to keep the server and state data in sync. In the `App.js` class, complete complete the deleteMovie function so that it recieves a movie id and sets movies to be equal to all movies BUT the movie with the indicated id.
+
+* [ ] Make the changes needed to give the correct component addes to your deleteMovie function.
+
+* [ ] Call deleteMovie at the approprate time and redirect the user to the `/movies` route.
+
+### Adding a Movie
+> *Alright! You ready! Let's see you use the skills of the previous steps to build a crud function from start to finish.*
+
+* [ ] Use `EditMovieForm.js` as a model to build an `AddMovieForm` component. The component should hold all the attributes of a new movie in local state as defined in the rest of application.
+
+* [ ] Add in a route that allows access to the add Movie button.
+
+* [ ] Locate the part of the ui that should navigate to your new AddMovieForm. Make that button redirect to your new component.
+
+* [ ] On submission, run the approprate request for adding a movie with the component's state values.
+
+* [ ] Make sure your component has access to and runs and modifications needed to global state and redirects to `/movies` after creation.
 
 ### Stretch goals
+- Make the added DeleteMovieModal appear and be reacted to before deletion occurs.
+- Add in add to favorites functionality. When the favorite button is pushed in the `Movie` component, make sure that when the favorite button is pushed, the id and name of the currently viewed into the favorite state slice in `App.js.`
+- For extra credit, insure that only unique movies can be added as favorites. Consider the `.find` method for arrays.
+- Style!
 
-- Add in a testing suite for the episodes component.
+### Resource: API documentation 
 
-- Look up the `TVMaze` API. Add a dropdown with the titles of some other popular shows. Add the user sequence of choosing a different show to fetch data for different shows.
-
-- Add React Router, and add the functionality to click an episode and navigate to an episode page.
-
-________________________________________________________________
-
-# HTTP Movies
-
-## Instructions
-
-### Task 1: Project Setup 
-
-- **Fork** this repository, then clone your fork.
-- Run `npm install` to download dependencies.
-- Run the server using `npm start`.
-- In a separate terminal cd into the `client` folder and run `npm install` to download dependencies.
-- Still inside the `client` folder run `npm start` to run the client application.
-
-### Task 2: MVP
-
-#### Updating A Movie:
-
-- Add a route at the path `/update-movie/:id`
-- Create a component with a form to update the chosen movie
-- Add a button in the movie component that routes you to your new route with the movies's id as the URL param
-- The form should make a PUT request to the server when submitted
-- When the call comes back successfully, reset your form state and route the user to `/` where they will see the updated movie in the list
-- (Editing the movie stars can be a stretch problem... don't worry about it now. Move on to the next step, and come back and solve this at the end)
-
-Movie object format:
-
+#### GET `http:/localhost:5000/api/movies`
+- Retrieves all the Movies with the following formatting:
 ```
-{
+[{
   id: 5,
   title: 'Tombstone',
   director: 'George P. Cosmatos',
   metascore: 89,
-  stars: ['Kurt Russell', 'Bill Paxton', 'Sam Elliot'],
-}
+  genre: "Drama",
+  description: : "A successful lawman's plans to retire anonymously in Tombstone, Arizona are disrupted by the kind of outlaws he was famous for eliminating."
+}]
 ```
+#### GET `http:/localhost:5000/api/movies/:id`
+- Retrieves movie with the passed in id.
 
-#### Deleting A Movie:
+#### GET `http:/localhost:5000/api/movies/:id`
+- Retrieves movie with the passed in id.
 
-- Add a delete button in the movie component that makes a DELETE request
-- When the call comes back successfully, route the user to `/` where they will see the updated movie list without the deleted movie
+#### POST `http:/localhost:5000/api/movies`
+- Adds the movie passed in through body to the server movies list. Returns updated movies list.
 
-#### Adding A Movie:
+#### PUT `http:/localhost:5000/api/movies/:id`
+- Replaced the movie with the passed in id with data passed in through body. Returns update movies list.
 
-- Add a route at the path `/add-movie`
-- Create a component with a form to add a new movie
-- Each created movie should have the following format (notice the array of strings - this will test your JS skills, so work through it methodically)
-- The form should make a POST request to the server when submitted
-- When the call comes back successfully, reset your form state and route the user to `/`
-
-Movie object format:
-
-```
-{
-  id: 5,
-  title: 'Tombstone',
-  director: 'George P. Cosmatos',
-  metascore: 89,
-  stars: ['Kurt Russell', 'Bill Paxton', 'Sam Elliot'],
-}
-```
-
-### Task 3: Stretch Problem
-
-- Add the ability to update the stars of a movie within a single text input field (think about how to change from an array of strings to a single string, then back to an array of strings)
-- See Part 3 above (Adding movies with a POST request)
-- Style the app!
-
-## Submission Format
-* [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
+#### DELETE `http:/localhost:5000/api/movies/:id`
+- Removed movie with the passed in id. Returns the deleted movie's id.
