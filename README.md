@@ -10,7 +10,7 @@ This module explored HTTP methods, REST interfaces, CRUD apps and using put and 
 ## Introduction
 CRUD applications are the foundation of most web applications. Being able to manage creating, edit and deleting data from an external source is as key a skill as it gets. In this project, you will complete the code nessisary to allow all of these fundmental actions.
 
-![Stranger Example](project-goals.gif)
+![Movie DB Example](project-goals.gif)
 
 ***Make sure to complete your tasks one at a time and complete test each task before proceeding forward.***
 
