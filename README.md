@@ -18,11 +18,12 @@ CRUD applications are the foundation of most web applications. Being able to man
 ### Task 1: Project Set Up
 * [ ] Create a forked copy of this project.
 * [ ] Clone your OWN version of the repository in your terminal
-* [ ] cd into the project base directory `cd web-module-project-reducer-pattern`
+* [ ] cd into the project base directory `cd web-module-project-HTTP`
+* [ ] Download server dependencies by running `npm install`
+* [ ] Run the local web server by running `node server.js`
+* [ ] Open a new terminal window and cd into the client code `cd client`
 * [ ] Download project dependencies by running `npm install`
 * [ ] Start up the app using `npm start`
-- [ ] With each saved change in your editor, the test runner will re-run all the tests
-- [ ] **IMPORTANT** If a test fails, use the test runner's error messages to find out why it is failing
 
 ### Task 2: Project Requirements
 #### Editing a Movie
@@ -74,7 +75,7 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 ### Resource: API documentation 
 
-#### GET `http:/localhost:5000/api/movies`
+#### GET `http://localhost:5000/api/movies`
 - Retrieves all the Movies with the following formatting:
 ```
 [{
@@ -86,17 +87,17 @@ CRUD applications are the foundation of most web applications. Being able to man
   description: : "A successful lawman's plans to retire anonymously in Tombstone, Arizona are disrupted by the kind of outlaws he was famous for eliminating."
 }]
 ```
-#### GET `http:/localhost:5000/api/movies/:id`
-- Retrieves movie with the passed in id.
+#### GET `http://localhost:5000/api/movies`
+- Retrieves all movies on the server.
 
-#### GET `http:/localhost:5000/api/movies/:id`
-- Retrieves movie with the passed in id.
+#### GET `http://localhost:5000/api/movies/:id`
+- Retrieves a movie with the passed value as id.
 
-#### POST `http:/localhost:5000/api/movies`
+#### POST `http://localhost:5000/api/movies`
 - Adds the movie passed in through body to the server movies list. Returns updated movies list.
 
-#### PUT `http:/localhost:5000/api/movies/:id`
+#### PUT `http://localhost:5000/api/movies/:id`
 - Replaced the movie with the passed in id with data passed in through body. Returns update movies list.
 
-#### DELETE `http:/localhost:5000/api/movies/:id`
+#### DELETE `http://localhost:5000/api/movies/:id`
 - Removed movie with the passed in id. Returns the deleted movie's id.
