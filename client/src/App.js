@@ -1,42 +1,71 @@
-import React, { useState, useEffect } from "react";
-import { Route } from "react-router-dom";
-import SavedList from "./Movies/SavedList";
-import MovieList from "./Movies/MovieList";
-import Movie from "./Movies/Movie";
+import React, { useEffect, useState } from "react";
+
+import { Route, Switch, Redirect } from "react-router-dom";
+import MovieList from './components/MovieList';
+import Movie from './components/Movie';
+
+import MovieHeader from './components/MovieHeader';
+
+import EditMovieForm from './components/EditMovieForm';
+import FavoriteMovieList from './components/FavoriteMovieList';
+
 import axios from 'axios';
 
-const App = () => {
-  const [savedList, setSavedList] = useState([]);
-  const [movieList, setMovieList] = useState([]);
+const App = (props) => {
+  const [movies, setMovies] = useState([]);
+  const [favoriteMovies, setFavoriteMovies] = useState([]);
 
-  const getMovieList = () => {
-    axios
-      .get("http://localhost:5000/api/movies")
-      .then(res => setMovieList(res.data))
-      .catch(err => console.log(err.response));
-  };
-
-  const addToSavedList = movie => {
-    setSavedList([...savedList, movie]);
-  };
-
-  useEffect(() => {
-    getMovieList();
+  useEffect(()=>{
+    axios.get('http://localhost:5000/api/movies')
+      .then(res => {
+        setMovies(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }, []);
 
+  const deleteMovie = (id)=> {
+    
+  }
+
+  const addToFavorites = (movie) => {
+    
+  }
+
   return (
-    <>
-      <SavedList list={savedList} />
+    <div>
+      <nav className="navbar navbar-dark bg-dark">
+        <span className="navbar-brand" ><img width="40px" alt="" src="./Lambda-Logo-Red.png"/> HTTP / CRUD Module Project</span>
+      </nav>
 
-      <Route exact path="/">
-        <MovieList movies={movieList} />
-      </Route>
+      <div className="container">
+        <MovieHeader/>
+        <div className="row ">
+          <FavoriteMovieList favoriteMovies={favoriteMovies}/>
+        
+          <Switch>
+            <Route path="/movies/edit/:id">
+            </Route>
 
-      <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
-      </Route>
-    </>
+            <Route path="/movies/:id">
+              <Movie/>
+            </Route>
+
+            <Route path="/movies">
+              <MovieList movies={movies}/>
+            </Route>
+
+            <Route path="/">
+              <Redirect to="/movies"/>
+            </Route>
+          </Switch>
+        </div>
+      </div>
+    </div>
   );
 };
 
+
 export default App;
+
