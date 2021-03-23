@@ -50,20 +50,18 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 * [ ] Build an event handler that makes a request to delete the currently viewed movie. Observe what is returned from the request.
 
-* [ ] You will once again need to keep the server and state data in sync. In `App.js`, complete the `deleteMovie` function so that it receives a movie id and sets movies to be equal to all movies BUT the movie with the indicated id.
+* [ ] You will once again need to keep the server and state data in sync. In `App.js`, pass the function needed to update movie state into correct component.
 
-* [ ] Make the changes needed to make `deleteMovie` accessible to the component containing delete functionality.
-
-* [ ] Call `deleteMovie` when your delete request is complete and redirect the user to the `/movies` route.
+* [ ] Update the movie state when your delete request is complete and redirect the user to the `/movies` route.
 
 ### Adding a Movie
 > *Alright! You ready! Let's see you use the skills of the previous steps to build a crud function from start to finish.*
 
-* [ ] Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state as defined in the rest of application.
+* [ ] Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state.
 
 * [ ] Add in a route that allows access to `AddMovieForm`.
 
-* [ ] Locate the part of the ui that should navigate to your new `AddMovieForm`. Make that button redirect to your new component.
+* [ ] Locate the part of the ui that should redirect to your new `AddMovieForm`. Make that button works as expected.
 
 * [ ] In `AddMovieForm,` add an event handler for form submission. When the form is submitted, run the approprate request for adding a movie with the component's state values.
 
@@ -71,7 +69,7 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 ### Stretch goals
 - Make the added DeleteMovieModal appear and be reacted to before deletion occurs.
-- Add in add to favorites functionality. When the favorite button is pushed in the `Movie` component, make sure that when the favorite button is pushed, the id and name of the currently viewed into the favorite state slice in `App.js.`
+- Add in `addToFavorites` functionality. When the favorite button is pushed in the `Movie` component, make sure that when the favorite button is pushed, the id and name of the currently viewed into the favorite state slice in `App.js.`
 - For extra credit, ensure that only unique movies can be added as favorites. Consider the `.find` method for arrays.
 - Add in some Style!
 
@@ -102,4 +100,4 @@ CRUD applications are the foundation of most web applications. Being able to man
 - Replaced the movie with the passed in id with data passed in through body. Returns update movies list.
 
 #### DELETE `http://localhost:5000/api/movies/:id`
-- Removed movie with the passed in id. Returns the deleted movie's id.
+- Removed movie with the passed in id. Returns update movies list.
