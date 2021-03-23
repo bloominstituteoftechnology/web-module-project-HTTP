@@ -14,8 +14,6 @@ const EditMovieForm = (props) => {
 		metascore: 0,
 		description: ""
 	});
-
-    const { id } = useParams();
 	
 	const handleChange = (e) => {
         setMovie({
@@ -29,8 +27,6 @@ const EditMovieForm = (props) => {
 	}
 	
 	const { title, director, genre, metascore, description } = movie;
-
-	console.log("here");
 
     return (
 	<div className="col">

@@ -31,7 +31,9 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 * [ ] First, we need to be able to navigate to the edit movie component. In App.js, add in the `<EditMovieForm> `component to the supplied edit route.
 
-* [ ] Next, we need to be able to load in the current movie's attributes into our local form state. In `EditMovieForm`, add in the api call need to get the movie with the passed in id when the component mounts.
+* [ ] Next, we need to grab the id being passed into the component through the url. Use the `useParams` hook to get the id value.
+
+* [ ] We need to be able to load in the current movie's attributes into our local form state. In `EditMovieForm`, add in the api call need to get the movie with the passed in id when the component mounts.
 
 * [ ] At this point, nothing happens when the edit form is submitted. Add in the api call needed to update the server with our updated movie data.
 
@@ -48,7 +50,7 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 * [ ] Build an event handler that makes a request to delete the currently viewed movie. Observe what is returned from the request.
 
-* [ ] You will once again need to keep the server and state data in sync. In `App.js`, complete the deleteMovie function so that it receives a movie id and sets movies to be equal to all movies BUT the movie with the indicated id.
+* [ ] You will once again need to keep the server and state data in sync. In `App.js`, complete the `deleteMovie` function so that it receives a movie id and sets movies to be equal to all movies BUT the movie with the indicated id.
 
 * [ ] Make the changes needed to make `deleteMovie` accessible to the component containing delete functionality.
 
