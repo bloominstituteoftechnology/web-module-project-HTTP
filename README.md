@@ -50,9 +50,11 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 * [ ] Build an event handler that makes a request to delete the currently viewed movie. Observe what is returned from the request.
 
-* [ ] You will once again need to keep the server and state data in sync. In `App.js`, pass the function needed to update movie state into correct component.
+* [ ] You will once again need to keep the server and state data in sync. In `App.js`, complete the `deleteMovie` method so that it receives an id, filters out any movie with that id and sets state to that resultant movie list.
 
-* [ ] Update the movie state when your delete request is complete and redirect the user to the `/movies` route.
+* [ ] Pass `deleteMovie` into the approprate component.
+
+* [ ] Run `deleteMovie` on the currently selected movie when your delete request is complete and redirect the user to the `/movies` route.
 
 ### Adding a Movie
 > *Alright! You ready! Let's see you use the skills of the previous steps to build a crud function from start to finish.*
@@ -100,4 +102,4 @@ CRUD applications are the foundation of most web applications. Being able to man
 - Replaced the movie with the passed in id with data passed in through body. Returns update movies list.
 
 #### DELETE `http://localhost:5000/api/movies/:id`
-- Removed movie with the passed in id. Returns update movies list.
+- Removed movie with the passed in id. Returns the deleted movie's id.

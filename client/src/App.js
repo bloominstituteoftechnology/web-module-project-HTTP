@@ -25,6 +25,10 @@ const App = (props) => {
       });
   }, []);
 
+  const deleteMovie = (id)=> {
+    
+  }
+
   const addToFavorites = (movie) => {
     
   }
@@ -37,7 +41,7 @@ const App = (props) => {
 
       <div className="container">
         <MovieHeader/>
-        <div className="row">
+        <div className="row ">
           <FavoriteMovieList favoriteMovies={favoriteMovies}/>
         
           <Switch>
