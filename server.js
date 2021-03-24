@@ -10,46 +10,54 @@ app.use(CORS());
 let movies = [
   {
     id: 0,
-    title: "The Godfather",
-    director: "Francis Ford Coppola",
+    title: 'The Godfather',
+    director: 'Francis Ford Coppola',
+    genre: 'Drama',
+    description: 'The best movie ever its amazing ive never seen it tho.',
     metascore: 100,
-    stars: ["Marlon Brando", "Al Pacino", "Robert Duvall"]
   },
   {
     id: 1,
-    title: "Star Wars",
-    director: "George Lucas",
-    metascore: 92,
-    stars: ["Mark Hamill", "Harrison Ford", "Carrie Fisher"]
+    title: 'Star Wars',
+    director: 'George Lucas',
+    genre: 'Sci-Fi',
+    metascore: 80,
+    description: 'Pew pew space laser, bad guys have terrible aim.',
   },
   {
     id: 2,
-    title: "The Lord of the Rings: The Fellowship of the Ring",
-    director: "Peter Jackson",
-    metascore: 92,
-    stars: ["Elijah Wood", "Ian McKellen", "Orlando Bloom"]
+    title: 'The Lord of the Rings: The Fellowship of the Ring',
+    director: 'Peter Jackson',
+    genre: 'Fantasy',
+    metascore: 80,
+    description: 'This ring is really strong idk.',
   },
   {
     id: 3,
-    title: "Terminator 2: Judgement Day",
-    director: "James Cameron",
+    title: 'Terminator 2: Judgement Day',
+    director: 'James Cameron',
     metascore: 94,
-    stars: ["Arnold Schwarzenegger", "Edward Furlong", "Linda Hamilton"]
+    genre: 'Sci-Fi',
+    description:
+      'AI & Robot revenge. Humans working their way towards their own destruction.',
   },
   {
     id: 4,
-    title: "Dumb and Dumber",
-    director: "The Farely Brothers",
+    title: 'Dumb and Dumber',
+    director: 'The Farely Brothers',
     metascore: 76,
-    stars: ["Jim Carrey", "Jeff Daniels", "Lauren Holly"]
+    genre: 'Comedy',
+    description: 'Two really dumb guys.',
   },
   {
     id: 5,
-    title: "Tombstone",
-    director: "George P. Cosmatos",
+    title: 'Tombstone',
+    director: 'George P. Cosmatos',
     metascore: 89,
-    stars: ["Kurt Russell", "Bill Paxton", "Sam Elliot"]
-  }
+    genre: 'Drama',
+    description:
+      "A successful lawman's plans to retire anonymously in Tombstone, Arizona are disrupted by the kind of outlaws he was famous for eliminating.",
+  },
 ];
 
 let movieId = movies.length;
@@ -81,7 +89,7 @@ app.put("/api/movies/:id", (req, res) => {
     !req.body.title ||
     !req.body.director ||
     !req.body.metascore ||
-    !req.body.stars
+    !req.body.description
   ) {
     res
       .status(422)

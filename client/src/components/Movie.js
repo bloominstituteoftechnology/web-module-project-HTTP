@@ -7,6 +7,7 @@ const Movie = (props) => {
     const { addToFavorites } = props;
 
     const [movie, setMovie] = useState('');
+    const [ movieNotFound, setMovieNotFound ] = useState(false);
 
     const { id } = useParams();
     const { push } = useHistory();
@@ -14,12 +15,31 @@ const Movie = (props) => {
     useEffect(()=>{
         axios.get(`http://localhost:5000/api/movies/${id}`)
             .then(res=>{
+                console.log(res);
                 setMovie(res.data);
             })
             .catch(err=>{
                 console.log(err);
+                setMovieNotFound(true);
             })
     }, [id]);
+
+    const deleteMovie = () => {
+      axios.delete(`http://localhost:5000/api/movies/${id}`)
+        .then(res => {
+          console.log(res);
+          push('/movies');
+        })
+        .catch(err => {
+          console.log(err.response);
+        })
+    }
+
+    if (movieNotFound) {
+        return (
+            <p>Couldn't find that movie. Go back!</p>
+        );
+    }
 
     return(<div className="modal-page col">
         <div className="modal-dialog">
@@ -50,9 +70,9 @@ const Movie = (props) => {
                         </section>
                         
                         <section>
-                            <span className="m-2 btn btn-dark">Favorite</span>
+                            <span className="m-2 btn btn-dark" onClick={() => movie && addToFavorites && addToFavorites(movie)}>Favorite</span>
                             <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
-                            <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete"/></span>
+                            <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete" onClick={deleteMovie}/></span>
                         </section>
                     </div>
                 </div>
