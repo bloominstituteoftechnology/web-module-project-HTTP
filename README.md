@@ -43,7 +43,7 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 * [ ] Redirect the user to the currently edited movie's individual info page.
 
-### Deleting a Movie
+#### Deleting a Movie
 > *You added in a CRUD feature! Good job! Now let's get deleted squared away...*
 
 * [ ] Identify the component that holds the "button" needed for deletion. Add an event handler to that button.
@@ -56,7 +56,7 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 * [ ] Run `deleteMovie` on the currently selected movie when your delete request is complete and redirect the user to the `/movies` route.
 
-### Adding a Movie
+#### Adding a Movie
 > *Alright! You ready! Let's see you use the skills of the previous steps to build a crud function from start to finish.*
 
 * [ ] Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state.
