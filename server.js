@@ -1,15 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const CORS = require("cors");
-
 const app = express();
-
 app.use(bodyParser.json());
 app.use(CORS());
 
 let movies = [
   {
-    id: 0,
+  id: 0,
     title: "The Godfather",
     director: "Francis Ford Coppola",
     metascore: 100,
@@ -102,7 +100,7 @@ app.put("/api/movies/:id", (req, res) => {
 });
 
 app.delete("/api/movies/:id", (req, res) => {
-  if (!req.params.id)
+if (!req.params.id)
     res.status(400).send("Your request is missing the movie id");
   movies = movies.filter(movie => `${movie.id}` !== req.params.id);
   res.status(202).send(movies);
