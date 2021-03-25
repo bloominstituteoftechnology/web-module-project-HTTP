@@ -4,8 +4,6 @@ import DeleteMovieModal from './DeleteMovieModal';
 import axios from 'axios';
 
 const Movie = (props) => {
-    const { addToFavorites } = props;
-
     const [movie, setMovie] = useState('');
 
     const { id } = useParams();
@@ -22,23 +20,10 @@ const Movie = (props) => {
             })
     }, [id]);
 
-    const handleDeleteClick = () => {
-        
-    axios.delete(`http://localhost:5000/api/movies/${id}`)
-        .then(res => {  
-        console.log(props.deleteMovie(id));
-        props.deleteMovie(id);
-        push('api/movies');
-    })
-    .catch(err=> {
-      console.log(err);
-    })
-    }
-    
-    const handleFavoriteClick = (movie) => {
+    const handleFavoriteClick = (e) => {
+        e.preventDefault();
         console.log("❤️ Favorited")
-        // props.setFavoriteMovies(movie)
-        // push('api/movies')
+        props.addToFavorites(id)
     }
 
     return(<div className="modal-page col">

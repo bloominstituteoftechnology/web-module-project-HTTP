@@ -8,7 +8,7 @@ const DeleteMovieModal = (props) => {
 
     const handleDeleteClick = (e) => {
         e.preventDefault();
-    axios.delete(`http://localhost:5000/api/movies/${id}`)
+        axios.delete(`http://localhost:5000/api/movies/${id}`)
         .then(res => {  
         props.deleteMovie(id);
         push('/api/movies');

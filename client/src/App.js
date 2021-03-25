@@ -30,8 +30,16 @@ const App = (props) => {
     setMovies(movies.filter(movie => (movie.id !== Number(id))))
   }
 
-  const addToFavorites = (movie) => {
-    // setFavoriteMovies(movies.find(mov => (mov.id == movie.id)))
+  const addToFavorites = (id) => {
+    console.log(id)
+    const newFavorite = movies.find((movie) => {
+      if (movie.id == id) {
+        return movie
+      }
+    })
+    console.log(newFavorite)
+    setFavoriteMovies(favoriteMovies, newFavorite)
+    // console.log(favoriteMovies.forEach(movie => movie.title))
   }
 
   return (
