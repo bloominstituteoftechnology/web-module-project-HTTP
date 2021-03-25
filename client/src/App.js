@@ -9,6 +9,8 @@ import MovieHeader from './components/MovieHeader';
 import EditMovieForm from './components/EditMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
 import AddMovieForm from './components/AddMovieForm';
+import DeleteMovieModal from "./components/DeleteMovieModal";
+
 
 import axios from 'axios';
 
@@ -26,12 +28,11 @@ const App = (props) => {
       });
   }, []);
 
-  const deleteMovie = (id)=> {
-    
-  }
+
 
   const addToFavorites = (movie) => {
-    
+    const check = favoriteMovies.some(mov=> mov.title ===movie.title);
+    return check ? favoriteMovies : setFavoriteMovies([...favoriteMovies, movie])
   }
 
 
@@ -46,7 +47,12 @@ const App = (props) => {
         <div className="row ">
           <FavoriteMovieList favoriteMovies={favoriteMovies} />
         
-          <Switch>
+          <Switch> 
+
+            <Route path='/movies/:id/modal'>
+            <DeleteMovieModal setMovies={setMovies}/>
+            </Route>
+
             <Route path='/addmovie'>
             <AddMovieForm setMovies={setMovies}/>
             </Route>
@@ -56,11 +62,11 @@ const App = (props) => {
             </Route>
 
             <Route path="/movies/:id">
-              <Movie setMovies={setMovies}/>
+              <Movie setMovies={setMovies} addToFavorites={addToFavorites}/>
             </Route>
 
             <Route path="/movies">
-              <MovieList movies={movies}/>
+              <MovieList movies={movies} />
             </Route>
             <Route path="/">
               <Redirect to="/movies"/>
