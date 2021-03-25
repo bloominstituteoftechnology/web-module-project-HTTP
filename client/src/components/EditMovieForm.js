@@ -18,12 +18,12 @@ const EditMovieForm = (props) => {
 
 	
 	const handleChange = (e) => {
-        setMovie({
-					movie: {
-						...movie,
-						[e.target.name]: e.target.value
-					}
-        });
+		setMovie({
+			...movie,
+			[e.target.name]: e.target.value
+		});
+		console.log(e.target.name, e.target.value)
+		console.log(movie)
 	}
 	
 	useEffect(()=>{
