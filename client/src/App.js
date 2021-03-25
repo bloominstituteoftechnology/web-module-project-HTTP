@@ -32,14 +32,21 @@ const App = (props) => {
 
   const addToFavorites = (id) => {
     console.log(id)
+    
     const newFavorite = movies.find((movie) => {
-      if (movie.id == id) {
+      if (movie.id == id ) {
         return movie
       }
     })
+    const checkIfExist = favoriteMovies.find((favMovie) => {
+      if (favMovie.id == id) {
+        return favMovie
+      }
+    })
     console.log(newFavorite)
-    setFavoriteMovies(favoriteMovies, newFavorite)
-    // console.log(favoriteMovies.forEach(movie => movie.title))
+    console.log(checkIfExist)
+
+    setFavoriteMovies(JSON.stringify(checkIfExist) === JSON.stringify(newFavorite) ? [...favoriteMovies] : [...favoriteMovies, newFavorite])
   }
 
   return (
