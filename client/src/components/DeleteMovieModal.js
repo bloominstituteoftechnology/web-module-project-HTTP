@@ -2,17 +2,16 @@ import React from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const DeleteMovieModal = () => {
+const DeleteMovieModal = (props) => {
     const { id } = useParams();
-    const { history } = useHistory();
+    const { push } = useHistory();
 
     const handleDeleteClick = (e) => {
         e.preventDefault();
     axios.delete(`http://localhost:5000/api/movies/${id}`)
         .then(res => {  
-        console.log(props.deleteMovie(id));
         props.deleteMovie(id);
-        history.push('/api/movies');
+        push('/api/movies');
     })
     .catch(err=> {
       console.log(err);

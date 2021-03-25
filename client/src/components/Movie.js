@@ -22,6 +22,19 @@ const Movie = (props) => {
             })
     }, [id]);
 
+    const handleDeleteClick = () => {
+        
+    axios.delete(`http://localhost:5000/api/movies/${id}`)
+        .then(res => {  
+        console.log(props.deleteMovie(id));
+        props.deleteMovie(id);
+        push('api/movies');
+    })
+    .catch(err=> {
+      console.log(err);
+    })
+    }
+    
     const handleFavoriteClick = (movie) => {
         console.log("❤️ Favorited")
         // props.setFavoriteMovies(movie)
