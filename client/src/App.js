@@ -5,7 +5,7 @@ import MovieList from './components/MovieList';
 import Movie from './components/Movie';
 
 import MovieHeader from './components/MovieHeader';
-
+import DeleteMovieModal from './components/DeleteMovieModal';
 import AddMovieForm from './components/AddMovieForm';
 import EditMovieForm from './components/EditMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
@@ -31,7 +31,7 @@ const App = (props) => {
   }
 
   const addToFavorites = (movie) => {
-    
+    // setFavoriteMovies(movies.find(mov => (mov.id == movie.id)))
   }
 
   return (
@@ -43,11 +43,15 @@ const App = (props) => {
       <div className="container">
         <MovieHeader/>
         <div className="row ">
-          <FavoriteMovieList favoriteMovies={favoriteMovies}/>
+          <FavoriteMovieList favoriteMovies={favoriteMovies} setFavoriteMovies={setFavoriteMovies}/>
         
           <Switch>
             <Route path="/movies/edit/:id" >
               <EditMovieForm setMovie={setMovies} />
+            </Route>
+
+            <Route path='/movies/delete/:id'>
+              <DeleteMovieModal {...props} deleteMovie={deleteMovie} />
             </Route>
 
             <Route path='/movies/add'>
@@ -55,7 +59,7 @@ const App = (props) => {
               </Route>
 
             <Route path="/movies/:id">
-              <Movie {...props} deleteMovie={deleteMovie}/>
+              <Movie {...props} addToFavorites={addToFavorites}/>
             </Route>
 
             <Route path="/movies">

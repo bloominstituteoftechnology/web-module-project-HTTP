@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
-
+import DeleteMovieModal from './DeleteMovieModal';
 import axios from 'axios';
 
 const Movie = (props) => {
@@ -22,18 +22,11 @@ const Movie = (props) => {
             })
     }, [id]);
 
-    const handleDeleteClick = ()=>{
-
-    axios.delete(`http://localhost:5000/api/movies/${id}`)
-        .then(res => {  
-        console.log(props.deleteMovie(id));
-        props.deleteMovie(id);
-        push('api/movies');
-    })
-    .catch(err=> {
-      console.log(err);
-    })
-  }
+    const handleFavoriteClick = (movie) => {
+        console.log("❤️ Favorited")
+        // props.setFavoriteMovies(movie)
+        // push('api/movies')
+    }
 
     return(<div className="modal-page col">
         <div className="modal-dialog">
@@ -64,10 +57,15 @@ const Movie = (props) => {
                         </section>
                         
                         <section>
-                            <span className="m-2 btn btn-dark">Favorite</span>
+                            <span
+                                className="m-2 btn btn-dark" type='button'
+                                value='Favorite'
+                                onClick={handleFavoriteClick}>
+                                ❤️ Favorite</span>
                             <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
-                            <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete"
-                                onClick={handleDeleteClick}/></span>
+                            <Link to={`/movies/delete/${movie.id}`}>
+                            <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete" /></span>
+                            </Link>
                         </section>
                     </div>
                 </div>
