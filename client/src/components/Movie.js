@@ -13,13 +13,27 @@ const Movie = (props) => {
 
     useEffect(()=>{
         axios.get(`http://localhost:5000/api/movies/${id}`)
-            .then(res=>{
+            .then(res => {
+                console.log(res.data)
                 setMovie(res.data);
             })
             .catch(err=>{
                 console.log(err);
             })
     }, [id]);
+
+    const handleDeleteClick = ()=>{
+
+    axios.delete(`http://localhost:5000/api/movies/${id}`)
+        .then(res => {  
+        console.log(props.deleteMovie(id));
+        props.deleteMovie(id);
+        push('api/movies');
+    })
+    .catch(err=> {
+      console.log(err);
+    })
+  }
 
     return(<div className="modal-page col">
         <div className="modal-dialog">
@@ -52,7 +66,8 @@ const Movie = (props) => {
                         <section>
                             <span className="m-2 btn btn-dark">Favorite</span>
                             <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
-                            <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete"/></span>
+                            <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete"
+                                onClick={handleDeleteClick}/></span>
                         </section>
                     </div>
                 </div>
