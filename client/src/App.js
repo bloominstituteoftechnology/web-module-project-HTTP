@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect} from "react-router-dom";
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
 
@@ -8,6 +8,7 @@ import MovieHeader from './components/MovieHeader';
 
 import EditMovieForm from './components/EditMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
+import AddMovieForm from './components/AddMovieForm';
 
 import axios from 'axios';
 
@@ -33,6 +34,7 @@ const App = (props) => {
     
   }
 
+
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark">
@@ -42,20 +44,24 @@ const App = (props) => {
       <div className="container">
         <MovieHeader/>
         <div className="row ">
-          <FavoriteMovieList favoriteMovies={favoriteMovies}/>
+          <FavoriteMovieList favoriteMovies={favoriteMovies} />
         
           <Switch>
+            <Route path='/addmovie'>
+            <AddMovieForm setMovies={setMovies}/>
+            </Route>
+
             <Route path="/movies/edit/:id">
+              <EditMovieForm setMovies={setMovies}/>
             </Route>
 
             <Route path="/movies/:id">
-              <Movie/>
+              <Movie setMovies={setMovies}/>
             </Route>
 
             <Route path="/movies">
               <MovieList movies={movies}/>
             </Route>
-
             <Route path="/">
               <Redirect to="/movies"/>
             </Route>
