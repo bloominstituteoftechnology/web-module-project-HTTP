@@ -8,7 +8,7 @@ const FavoriteMovieList = (props) => {
         <h5>Favorite Movies</h5>
         {
             props.favoriteMovies.map(movie=>{
-                return <Link key={movie.id} className="btn btn-light savedButton" to={`/movies/${movie.id}`}>{movie.title}</Link>
+                return <Link key={movie.id} className="btn btn-light savedButton" to={`/movies/${movie.id}`}>❤️ {movie.title}</Link>
             })
         }
     </div>);
