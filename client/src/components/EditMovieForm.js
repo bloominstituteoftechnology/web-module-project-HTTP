@@ -51,8 +51,6 @@ const EditMovieForm = (props) => {
 		})
 	}
 	
-	// const { title, director, genre, metascore, description } = movie;
-
     return (
 	<div className="col">
 		<div className="modal-content">

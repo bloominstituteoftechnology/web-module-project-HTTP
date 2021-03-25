@@ -9,7 +9,7 @@ const AddMovieForm = (props) => {
 	const { push } = useHistory();
 
   const initialValues = {
-    id: '',
+    id: Date.now(),
 		title:"",
 		director: "",
 		genre: "",
@@ -45,8 +45,6 @@ const AddMovieForm = (props) => {
 		})
 	}
 	
-	// const { title, director, genre, metascore, description } = movie;
-
     return (
 	<div className="col">
 		<div className="modal-content">
@@ -79,7 +77,7 @@ const AddMovieForm = (props) => {
 				</div>
 				<div className="modal-footer">			    
 					<input type="submit" className="btn btn-info" value="Save"/>
-					<Link to={`/movies/${id}`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
+					<Link to={`/movies/`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
 				</div>
 			</form>
 		</div>
