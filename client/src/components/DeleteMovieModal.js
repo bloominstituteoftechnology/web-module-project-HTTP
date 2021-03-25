@@ -10,11 +10,12 @@ const DeleteMovieModal = (props) => {
     const {id} = useParams();
     console.log(id)
 
-    const delMovie = () =>{
+    const delMovie = (e) =>{
+        e.preventDefault();
     axios.delete(`http://localhost:5000/api/movies/${id}`)
     .then(res => {
         props.setMovies(res.data);
-        window.location.href = '/movies';
+        history.push('/movies');
     })
     .catch(err => {
         console.log(err)
