@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
+import e from 'cors';
 
 const Movie = (props) => {
     const { addToFavorites } = props;
