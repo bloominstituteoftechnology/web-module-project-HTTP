@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
 
@@ -10,8 +10,11 @@ import EditMovieForm from './components/EditMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
 
 import axios from 'axios';
+import e from "cors";
+import DeleteMovieModal from "./components/DeleteMovieModal";
 
 const App = (props) => {
+  const { push } = useHistory();
   const [movies, setMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
@@ -26,6 +29,14 @@ const App = (props) => {
   }, []);
 
   const deleteMovie = (id)=> {
+    e.preventDefault();
+    axios.delete(`http://localhost:5000/api/movies/${id}`)
+    .then(res => {
+      console.log("DELETE ", res);
+      props.setMovies(res.data)
+      push('/movies')
+    })
+    .catch(error => console.log('delete error: ', error))
   }
 
   const addToFavorites = (movie) => {

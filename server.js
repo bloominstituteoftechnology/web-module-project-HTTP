@@ -70,7 +70,7 @@ app.get("/api/movies/:id", (req, res) => {
 });
 
 app.post("/api/movies", (req, res) => {
-  if (req.body.title !== undefined) {
+  if (req.body.title !== undefined) { 
     const newMovie = req.body;
     newMovie["id"] = movieId;
     movies.push(newMovie);
