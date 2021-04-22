@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, useParams } from "react-router-dom";
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
 
@@ -26,12 +26,14 @@ const App = (props) => {
   }, []);
 
   const deleteMovie = (id)=> {
+    setMovies(movies.filter((movie) => movie.id !== id));
   }
 
   const addToFavorites = (movie) => {
     
   }
-
+  
+const {id} = useParams()
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark">
@@ -44,11 +46,11 @@ const App = (props) => {
           <FavoriteMovieList favoriteMovies={favoriteMovies}/>
         
           <Switch>
-            <Route path="/movies/edit/:id">
+            <Route component={EditMovieForm} path="/movies/edit/:id">
             </Route>
 
             <Route path="/movies/:id">
-              <Movie/>
+              <Movie {...props} deleteMovie={deleteMovie} />
             </Route>
 
             <Route path="/movies">
