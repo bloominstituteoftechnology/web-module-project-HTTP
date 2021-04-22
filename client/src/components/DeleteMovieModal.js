@@ -7,7 +7,12 @@ const DeleteMovieModal = () => {
                 <form>
                     <div className="modal-header">						
                         <h4 className="modal-title">Delete Movie</h4>
-                        <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button 
+                        type="button" 
+                        className="close" 
+                        data-dismiss="modal" 
+                        aria-hidden="true">&times;
+                        </button>
                     </div>
                     <div className="modal-body">					
                         <p>Are you sure you want to delete these records?</p>
