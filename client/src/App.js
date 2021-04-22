@@ -8,6 +8,7 @@ import MovieHeader from './components/MovieHeader';
 
 import EditMovieForm from './components/EditMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
+import AddMovieForm from './components/AddMovieForm';
 
 import axios from 'axios';
 
@@ -32,7 +33,7 @@ const App = (props) => {
   const addToFavorites = (movie) => {
     
   }
-  
+
 const {id} = useParams()
   return (
     <div>
@@ -55,6 +56,10 @@ const {id} = useParams()
 
             <Route path="/movies">
               <MovieList movies={movies}/>
+            </Route>
+
+            <Route path="/movies">
+                <MovieList/>
             </Route>
 
             <Route path="/">
