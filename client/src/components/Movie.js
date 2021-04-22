@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import DeleteMovieModal from "./DeleteMovieModal";
 
 import axios from "axios";
 
 const Movie = (props) => {
-	const { addToFavorites, setMovies } = props;
+	const { addToFavorites } = props;
 
 	const [movie, setMovie] = useState("");
-	const [deleting, setDeleting] = useState(false);
 
 	const { id } = useParams();
 	const { push } = useHistory();
@@ -23,18 +21,6 @@ const Movie = (props) => {
 				console.log(err);
 			});
 	}, [id]);
-
-	const handleDelete = (e) => {
-		e.preventDefault();
-		axios
-			.delete(`http://localhost:5000/api/movies/${id}`)
-			.then((res) => {
-				console.log(res.data);
-				setMovies(res.data);
-				push(`/movies`);
-			})
-			.catch((err) => console.log(err));
-	};
 
 	return (
 		<div className="modal-page col">
@@ -87,7 +73,6 @@ const Movie = (props) => {
 										type="button"
 										className="m-2 btn btn-danger"
 										value="Delete"
-										onClick={(e) => setDeleting(!deleting)}
 									/>
 								</span>
 							</section>
@@ -95,12 +80,6 @@ const Movie = (props) => {
 					</div>
 				</div>
 			</div>
-			{deleting && (
-				<DeleteMovieModal
-					cancel={() => setDeleting(false)}
-					confirm={handleDelete}
-				/>
-			)}
 		</div>
 	);
 };
