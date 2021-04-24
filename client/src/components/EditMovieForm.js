@@ -12,7 +12,8 @@ const EditMovieForm = (props) => {
 		director: "",
 		genre: "",
 		metascore: 0,
-		description: ""
+		description: "",
+		
 	});
 	
 	const handleChange = (e) => {
@@ -41,7 +42,7 @@ const EditMovieForm = (props) => {
 						<input value={title} onChange={handleChange} name="title" type="text" className="form-control"/>
 					</div>
 					<div className="form-group">
-						<label>Director</label>
+						<label>Director </label>
 						<input value={director} onChange={handleChange} name="director" type="text" className="form-control"/>
 					</div>
 					<div className="form-group">
