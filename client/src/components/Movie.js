@@ -17,10 +17,17 @@ const Movie = (props) => {
             .catch(err => { console.log(err.response) })
     }, [id]);
 
+    // Delete movie on server
+    // Update app state to remove movie
+    // Redirect user back to movie list
     function deleteMovie () {
+        // Note: res.data is the id of the movie that was
+        // successfully deleted
         axios.delete(`http://localhost:5000/api/movies/${id}`)
             .then(res => {
+                // Delete the movie from app level state
                 deleteMovieCallbackFn(id);
+                // Redirect user back to the movie list
                 push('/movies');
             })
             .catch(err => console.log(err));

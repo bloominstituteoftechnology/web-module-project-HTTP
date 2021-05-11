@@ -37,17 +37,17 @@ const App = (props) => {
     ])
   }
 
-  const deleteMovie = (id) => {
-    const newMovieList = movies.filter((movie) => movie.id !==id);
+  // DELETE: Delete movie
+  function deleteMovie(id) {
+    const newMovieList = movies.filter((movie) => movie.id !== id );
     setMovies(newMovieList)
   } 
-  //Created this deleteMovie function, that filters out a movie by it's id, then
-  //refreshses the movieList. This function is added to the component where the
-  //delete axios call is being made. The deleteMovie function is being passed down via
-  //via props to Movie. Where it can then access it to put into the axios call. So that
-  //this function fires whenever the delete button is pushed.
   
-
+  // Created this deleteMovie function, that filters out a movie by it's id, then
+  // refreshses the movieList. This function is added to the component where the
+  // delete axios call is being made. The deleteMovie function is being passed down via
+  // via props to Movie. Where it can then access it to put into the axios call. So that
+  // this function fires whenever the delete button is pushed.
   const addToFavorites = (movie) => {
     
   }
@@ -74,7 +74,7 @@ const App = (props) => {
             </Route>
             
             <Route path="/movies/:id">
-              <Movie onDelete={deleteMovie} />
+              <Movie deleteMovie={deleteMovie} />
             </Route>
 
             <Route path="/movies">
