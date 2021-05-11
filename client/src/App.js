@@ -7,8 +7,7 @@ import Movie from './components/Movie';
 import MovieHeader from './components/MovieHeader';
 
 import EditMovieForm from './components/EditMovieForm';
-//add in AddMovie 
-import AddMovie from './components/AddMovie';
+import AddMovieForm from './components/AddMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
 
 import axios from 'axios';
@@ -30,12 +29,12 @@ const App = (props) => {
 
   // PUT: Update movie
   function updateMovie(id, movie) {
-    setMovies(
+    setMovies([
       // All unmodified movies
       ...movies.filter(movie => movie.id !== id),
       // Our updated movie
       Object.assign({}, { id }, movie)
-      )
+    ])
   }
 
   const deleteMovie = (id) => {
@@ -66,16 +65,14 @@ const App = (props) => {
         
           <Switch>
 
-          <Route path="/movies/add"
-              render={props => <AddMovie {...props} setMovies={setMovies}/>}
-            />
+            <Route path="/movies/add">
+              <AddMovieForm setMovies={setMovies} />
+            </Route>
 
             <Route path="/movies/edit/:id">
-              <EditMovieForm updateMovie={updateMovie}/>
+              <EditMovieForm updateMovie={updateMovie} />
             </Route>
             
-            
-
             <Route path="/movies/:id">
               <Movie onDelete={deleteMovie} />
             </Route>
@@ -87,10 +84,6 @@ const App = (props) => {
             <Route path="/">
               <Redirect to="/movies"/>
             </Route>
-
-             
-
-            
 
           </Switch>
         </div>

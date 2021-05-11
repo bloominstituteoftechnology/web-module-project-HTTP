@@ -40,8 +40,9 @@ const EditMovieForm = ({ updateMovie: updateMovieCallbackFn }) => {
 		e.preventDefault();
 		
 		// PUT: Updates movie with `id`
+		// Note: res.data is an array of all movies on the server
 		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
-			.then(() => {
+			.then(res => {
 				// Update app level state for our movie
 				updateMovieCallbackFn(id, movie);
 				// Redirect to the "view/detail" page for the movie we just updated
@@ -83,7 +84,7 @@ const EditMovieForm = ({ updateMovie: updateMovieCallbackFn }) => {
 									
 				</div>
 				<div className="modal-footer">			    
-					<input type="submit" className="btn btn-info" value="Save"/>
+					<input type="submit" className="btn btn-info" value="Update"/>
 					<Link to={`movies/${id}`}>
 						<input type="button" className="btn btn-default" value="Cancel"/>
 					</Link>
