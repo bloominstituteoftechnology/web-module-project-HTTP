@@ -85,7 +85,7 @@ const EditMovieForm = ({ updateMovie: updateMovieCallbackFn }) => {
 				</div>
 				<div className="modal-footer">			    
 					<input type="submit" className="btn btn-info" value="Update"/>
-					<Link to={`movies/${id}`}>
+					<Link to={`/movies/${id}`}>
 						<input type="button" className="btn btn-default" value="Cancel"/>
 					</Link>
 				</div>

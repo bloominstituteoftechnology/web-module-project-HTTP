@@ -1,33 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
-
 import axios from 'axios';
 
 const Movie = (props) => {
-    const { addToFavorites, onDelete } = props;
-
+    const { addToFavorites, deleteMovie: deleteMovieCallbackFn } = props;
     const [movie, setMovie] = useState('');
-
     const { id } = useParams();
     const { push } = useHistory();
 
+    // When the page loads, or the id is updated
+	// Get the movie's info from the API
+	// Set our local state with that data
     useEffect(()=>{
         axios.get(`http://localhost:5000/api/movies/${id}`)
-            .then(res=>{
-                setMovie(res.data);
-            })
-            .catch(err=>{
-                console.log(err.response);
-            })
+            .then(res => { setMovie(res.data) })
+            .catch(err => { console.log(err.response) })
     }, [id]);
 
-    const handleDelete = () => {
+    function deleteMovie () {
         axios.delete(`http://localhost:5000/api/movies/${id}`)
             .then(res => {
-                console.log(res);
-                setMovie(res.data);
-                onDelete(id);
-                push('/movies'); //push these changes to the movies path
+                deleteMovieCallbackFn(id);
+                push('/movies');
             })
             .catch(err => console.log(err));
     }
@@ -62,8 +56,10 @@ const Movie = (props) => {
                         
                         <section>
                             <span className="m-2 btn btn-dark">Favorite</span>
-                            <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
-                            <span className="delete"><input type="button" onClick={handleDelete} className="m-2 btn btn-danger" value="Delete"/></span>
+                            <Link to={`/movies/edit/${id}`} className="m-2 btn btn-success">Edit</Link>
+                            <span className="delete">
+                                <input type="button" onClick={deleteMovie} className="m-2 btn btn-danger" value="Delete"/>
+                            </span>
                         </section>
                     </div>
                 </div>
