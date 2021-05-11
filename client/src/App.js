@@ -13,6 +13,7 @@ import axios from 'axios';
 
 const App = (props) => {
   const [movies, setMovies] = useState([]);
+
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   useEffect(()=>{
@@ -44,8 +45,10 @@ const App = (props) => {
           <FavoriteMovieList favoriteMovies={favoriteMovies}/>
         
           <Switch>
-            <Route path="/movies/edit/:id">
-            </Route>
+            <Route path="/movies/edit/:id"
+              render={props => <EditMovieForm {...props} setMovies={setMovies}/>}
+            />
+            
 
             <Route path="/movies/:id">
               <Movie/>
@@ -58,6 +61,11 @@ const App = (props) => {
             <Route path="/">
               <Redirect to="/movies"/>
             </Route>
+
+             
+
+            
+
           </Switch>
         </div>
       </div>
