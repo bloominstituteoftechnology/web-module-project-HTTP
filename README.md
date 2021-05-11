@@ -29,7 +29,7 @@ CRUD applications are the foundation of most web applications. Being able to man
 #### Editing a Movie
 > *Let's start by walking through the process of adding the routing, component and service calls need for resource updating*
 
-* [ ] First, we need to be able to navigate to the edit movie component. In App.js, add in the `<EditMovieForm> `component to the supplied edit route.
+* [X] First, we need to be able to navigate to the edit movie component. In App.js, add in the `<EditMovieForm> `component to the supplied edit route.
 
 * [ ] Next, we need to grab the id being passed into the component through the url. Use the `useParams` hook to get the id value.
 
