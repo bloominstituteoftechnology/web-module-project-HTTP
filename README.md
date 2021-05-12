@@ -59,9 +59,9 @@ CRUD applications are the foundation of most web applications. Being able to man
 #### Adding a Movie
 > *Alright! You ready! Let's see you use the skills of the previous steps to build a crud function from start to finish.*
 
-* [ ] Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state.
+* [x] Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state.
 
-* [ ] Add in a route that allows access to `AddMovieForm`.
+* [x] Add in a route that allows access to `AddMovieForm`.
 
 * [ ] Locate the part of the ui that should redirect to your new `AddMovieForm`. Make that button works as expected.
 
