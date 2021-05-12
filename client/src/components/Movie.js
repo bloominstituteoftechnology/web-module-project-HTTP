@@ -11,6 +11,18 @@ const Movie = (props) => {
   const { id } = useParams();
   const { push } = useHistory();
 
+  const handleDelete = () => {
+    axios
+      .delete("http://localhost:5000/api/movies/${id}")
+      .then((res) => {
+        setMovie(res.data);
+        push(`/movies/${id}`);
+        console.log("res:", res);
+      })
+      .catch((err) => {
+        console.log("err:", err);
+      });
+  };
   useEffect(() => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
@@ -73,6 +85,7 @@ const Movie = (props) => {
                     type="button"
                     className="m-2 btn btn-danger"
                     value="Delete"
+                    onClick={handleDelete}
                   />
                 </span>
               </section>

@@ -53,9 +53,9 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 > _You added in a CRUD feature! Good job! Now let's get deleted squared away..._
 
-- [ ] Identify the component that holds the "button" needed for deletion. Add an event handler to that button.
+- [ x] Identify the component that holds the "button" needed for deletion. Add an event handler to that button.
 
-- [ ] Build an event handler that makes a request to delete the currently viewed movie. Observe what is returned from the request.
+- [ x] Build an event handler that makes a request to delete the currently viewed movie. Observe what is returned from the request.
 
 - [ ] You will once again need to keep the server and state data in sync. In `App.js`, complete the `deleteMovie` method so that it receives an id, filters out any movie with that id and sets state to that resultant movie list.
 
