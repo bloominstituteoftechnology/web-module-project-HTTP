@@ -1,30 +1,26 @@
 import React, { useEffect, useState } from "react";
-
 import { Route, Switch, Redirect } from "react-router-dom";
+// 
+import MovieHeader from './components/MovieHeader';
+import FavoriteMovieList from './components/FavoriteMovieList';
+// Pages
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
-
-import MovieHeader from './components/MovieHeader';
-
 import EditMovieForm from './components/EditMovieForm';
 import AddMovieForm from './components/AddMovieForm';
-import FavoriteMovieList from './components/FavoriteMovieList';
+
 
 import axios from 'axios';
 
 const App = (props) => {
   const [movies, setMovies] = useState([]);
-  const [favoriteMovies, setFavoriteMovies] = useState([]);
   
-
-  useEffect(()=>{
+  // When the app first loads, get the list of
+  // movies from the server
+  useEffect(() => {
     axios.get('http://localhost:5000/api/movies')
-      .then(res => {
-        setMovies(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+      .then(res => { setMovies(res.data) })
+      .catch(err => { console.log(err) });
   }, []);
 
   // PUT: Update movie
@@ -42,15 +38,6 @@ const App = (props) => {
     const newMovieList = movies.filter((movie) => movie.id !== id );
     setMovies(newMovieList)
   } 
-  
-  // Created this deleteMovie function, that filters out a movie by it's id, then
-  // refreshses the movieList. This function is added to the component where the
-  // delete axios call is being made. The deleteMovie function is being passed down via
-  // via props to Movie. Where it can then access it to put into the axios call. So that
-  // this function fires whenever the delete button is pushed.
-  const addToFavorites = (movie) => {
-    
-  }
 
   return (
     <div>
@@ -61,7 +48,7 @@ const App = (props) => {
       <div className="container">
         <MovieHeader/>
         <div className="row ">
-          <FavoriteMovieList favoriteMovies={favoriteMovies}/>
+          <FavoriteMovieList favoriteMovies={[]}/>
         
           <Switch>
 
