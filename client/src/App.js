@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom"
 
 import { Route, Switch, Redirect } from "react-router-dom";
 import MovieList from "./components/MovieList";
@@ -47,7 +46,7 @@ const App = (props) => {
 
           <Switch>
             <Route path="/movies/edit/:id">
-              <EditMovieForm />
+              <EditMovieForm setMovies={setMovies} />
             </Route>
 
             <Route path="/movies/:id">
