@@ -8,7 +8,7 @@ This module explored HTTP methods, REST interfaces, CRUD apps and using put and 
 - Understand how to pass values into a Route component to allow for the updating of state.
 
 ## Introduction
-CRUD applications are the foundation of most web applications. Being able to manage creating, edit and deleting data from an external source is as key a skill as it gets. In this project, you will complete the code nessisary to allow all of these fundmental actions.
+CRUD applications are the foundation of most web applications. Being able to manage creating, edit and deleting data from an external source is as key a skill as it gets. In this project, you will complete the code necessary to allow all of these fundmental actions.
 
 ![Movie DB Example](project-goals.gif)
 
