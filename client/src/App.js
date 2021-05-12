@@ -35,7 +35,8 @@ const App = (props) => {
 
   // DELETE: Delete movie
   function deleteMovie(id) {
-    const newMovieList = movies.filter((movie) => movie.id !== id );
+    console.log(`deleting movie with id: ${id}`)
+    const newMovieList = movies.filter((m) => m.id !== id );
     setMovies(newMovieList)
   } 
 

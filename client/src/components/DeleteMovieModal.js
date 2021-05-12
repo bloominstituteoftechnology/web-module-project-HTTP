@@ -15,7 +15,10 @@ const DeleteMovieModal = ({ onCancel: cancel, onDelete: confirmDelete }) => {
                     </div>
                     <div className="modal-footer">
                         <input type="button" className="btn btn-default" data-dismiss="modal" value="Cancel" onClick={cancel}/>
-                        <input type="submit" className="btn btn-danger" value="Delete" onClick={confirmDelete} />
+                        <input type="submit" className="btn btn-danger" value="Delete" onClick={(e) => {
+                            e.preventDefault();
+                            confirmDelete(e);
+                        }} />
                     </div>
                 </form>
             </div>

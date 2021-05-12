@@ -40,7 +40,7 @@ const Movie = (props) => {
         axios.delete(`http://localhost:5000/api/movies/${id}`)
             .then(res => {
                 // Delete the movie from app level state
-                deleteMovieCallbackFn(id);
+                deleteMovieCallbackFn(res.data);
                 // Hide delete modal
                 setIsDeleting(false);
                 // Redirect user back to the movie list
