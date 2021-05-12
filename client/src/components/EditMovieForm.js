@@ -34,8 +34,8 @@ const EditMovieForm = (props) => {
     axios
       .put(`http://localhost:5000/api/movies/${id}`, movie)
       .then((res) => {
-        setMovie(res.data);
-        push(`movie/${id}`);
+        setMovie(res.data.id);
+        push(`/movies/${id}`);
         console.log("res:", res);
       })
       .catch((err) => {
@@ -44,6 +44,8 @@ const EditMovieForm = (props) => {
   };
 
   const { title, director, genre, metascore, description } = movie;
+
+  console.log(metascore);
 
   return (
     <div className="col">
@@ -110,9 +112,10 @@ const EditMovieForm = (props) => {
               type="submit"
               className="btn btn-info"
               value="Save"
-              onClick={() => push("/api/movies/:id")}
+              onClick={() => push(`/movie/${id}`)}
+              // onSubmit={handleSubmit}
             />
-            <Link to={`/movies/1`}>
+            <Link to={`/movies`}>
               <input type="button" className="btn btn-default" value="Cancel" />
             </Link>
           </div>
