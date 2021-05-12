@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
+
+
 const EditMovieForm = (props) => {
 	const { push } = useHistory();
+	const { id } = useParams();
 
 	const [movie, setMovie] = useState({
 		title:"",
@@ -14,6 +17,7 @@ const EditMovieForm = (props) => {
 		metascore: 0,
 		description: ""
 	});
+
 	
 	const handleChange = (e) => {
         setMovie({
@@ -24,6 +28,14 @@ const EditMovieForm = (props) => {
 
     const handleSubmit = (e) => {
 		e.preventDefault();
+		console.log('updating movie', movie);
+		axios.put(`http://localhost:5000/movies/${id}`, movie)
+		.then(res => {
+			console.log(res.data);
+			props.setMovie(res.data)
+			push(`/movie/${id}`);
+		})
+		.catch(error => console.log(error))
 	}
 	
 	const { title, director, genre, metascore, description } = movie;
