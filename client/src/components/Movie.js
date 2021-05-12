@@ -8,6 +8,17 @@ const Movie = (props) => {
 
     const [movie, setMovie] = useState('');
 
+    const handelDelete = () =>{
+        axios.delete(`http://localhost:5000/api/movies/${id}`)
+        .then(res => {console.log(res)
+        props.setMovie(res.data)}
+        )
+        .catch(err => console.log(err))
+        }
+       
+
+
+
     const { id } = useParams();
     const { push } = useHistory();
 
@@ -52,7 +63,7 @@ const Movie = (props) => {
                         <section>
                             <span className="m-2 btn btn-dark">Favorite</span>
                             <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
-                            <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete"/></span>
+                            <span className="delete"><input type="button" className="m-2 btn btn-danger" onClick={handelDelete} value="Delete"/></span>
                         </section>
                     </div>
                 </div>
