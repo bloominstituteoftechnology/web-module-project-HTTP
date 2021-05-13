@@ -45,27 +45,25 @@ const App = (props) => {
           <FavoriteMovieList favoriteMovies={favoriteMovies}/>
         
           <Switch>
+          <Route path='/movies/add'>
+               <AddMovieForm movies= {movies} setMovies= {setMovies}/>
+              </Route>
+              
             <Route path="/movies/edit/:id"
             render ={props => <EditMovieForm {...props} setMovies= {setMovies}/>}>
             </Route>
 
             <Route path="/movies/:id">
-              <Movie/>
+              <Movie movies={movies} setMovies={setMovies}/>
             </Route>
 
             <Route path="/movies">
               <MovieList movies={movies}/>
             </Route>
 
+
             <Route path="/">
               <Redirect to="/movies"/>
-
-              <Route path='/movies/add'
-              render= {props => <AddMovieForm {...props} setMovies= {setMovies}/>}
-              >
-                
-
-              </Route>
             </Route>
           </Switch>
         </div>
