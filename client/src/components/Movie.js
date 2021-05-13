@@ -3,6 +3,8 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 
+
+
 const Movie = (props) => {
     const { addToFavorites, movies, setMovies } = props;
 
