@@ -1,13 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import EditMovieForm from './EditMovieForm'
+import axios from 'axios'
 
-const DeleteMovieModal = () => {
+const DeleteMovieModal = (props) => {
+    const [movie, setMovie]= useState({})
+    const { id } = props.match.params
+
+    const handleDelete = () =>{
+        axios.delete(`http://localhost:5000/api/movies/${id}`)
+        .then(res=> {
+            console.log(res, 'its working')
+            setMovie(res.data)
+            props.history.push('/movies')
+            
+
+        })
+        .catch(err => console.log(err))
+    }
+
     return (<div id="deleteMovieModal">
         <div className="modal-dialog">
             <div className="modal-content">
                 <form>
                     <div className="modal-header">						
                         <h4 className="modal-title">Delete Movie</h4>
-                        <button type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <button onClick={handleDelete} type="button" className="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div className="modal-body">					
                         <p>Are you sure you want to delete these records?</p>
