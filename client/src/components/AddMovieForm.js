@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 
 import axios from "axios";
 
-const EditMovieForm = (props) => {
+const AddMovieForm = (props) => {
   const { push } = useHistory();
-  const { id } = useParams();
 
   const [movie, setMovie] = useState({
     title: "",
@@ -16,14 +15,7 @@ const EditMovieForm = (props) => {
     description: "",
   });
 
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/movies/${id}`)
-      .then((res) => {
-        setMovie(res.data);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  const { id } = useParams();
 
   const handleChange = (e) => {
     setMovie({
@@ -35,11 +27,15 @@ const EditMovieForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.put(`http://localhost:5000/api/movies/${id}`, movie).then((res) => {
-      props.setMovies(res.data);
-      push(`/movies/${id}`);
-      console.log(movie);
-    });
+    axios
+      .post(`http://localhost:5000/api/movies`, movie)
+      .then((res) => {
+        console.log(res);
+        push(`/movies`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const { title, director, genre, metascore, description } = movie;
@@ -106,7 +102,7 @@ const EditMovieForm = (props) => {
           </div>
           <div className="modal-footer">
             <input type="submit" className="btn btn-info" value="Save" />
-            <Link to={`/movies/1`}>
+            <Link to={`/movies`}>
               <input type="button" className="btn btn-default" value="Cancel" />
             </Link>
           </div>
@@ -116,4 +112,4 @@ const EditMovieForm = (props) => {
   );
 };
 
-export default EditMovieForm;
+export default AddMovieForm;
