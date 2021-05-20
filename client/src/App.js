@@ -4,6 +4,8 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
 
+import EditMovieForm from './components/EditMovieForm';
+
 import MovieHeader from './components/MovieHeader';
 
 import EditMovieForm from './components/EditMovieForm';
@@ -25,11 +27,20 @@ const App = (props) => {
       });
   }, []);
 
+
   const deleteMovie = (id)=> {
+    axios.delete(`http://localhost:5000/api/movies/:id{id}`)
+    .then(res=> {
+      props.setItems(res.data);
+      props.history.push('/item-list');
+    })
+    .catch(err=>{
+      console.log(err);
+    })
   }
 
   const addToFavorites = (movie) => {
-    
+    props.history.push(`/update-item/${id}`
   }
 
   return (
@@ -65,6 +76,13 @@ const App = (props) => {
   );
 };
 
+const rootElement = document.getElementById("root");
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>,
+  rootElement
+);
 
 export default App;
 
