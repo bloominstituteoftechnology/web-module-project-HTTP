@@ -25,8 +25,6 @@ const App = (props) => {
       });
   }, []);
 
-  movies.forceUpdate(movies)
-
   const deleteMovie = (id)=> {
   }
 
