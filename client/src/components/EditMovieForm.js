@@ -6,15 +6,26 @@ import axios from 'axios';
 
 const EditMovieForm = (props) => {
 	const { push } = useHistory();
+	const { id } = useParams();
 
 	const [movie, setMovie] = useState({
 		title:"",
 		director: "",
 		genre: "",
 		metascore: 0,
-		description: ""
+		description: "",
+		
 	});
 	
+	useEffect(() => {
+		// STEP 3 - using the item id from params, fetch the data for the
+		// item we want to edit and set it to "item" state
+		axios
+		  .get(`http://localhost:5000/api/movies/${id}`)
+		  .then((res) => setMovie(res.data))
+		  .catch((err) => console.log({ err }));
+	  }, []);
+
 	const handleChange = (e) => {
         setMovie({
             ...movie,
@@ -24,6 +35,13 @@ const EditMovieForm = (props) => {
 
     const handleSubmit = (e) => {
 		e.preventDefault();
+		axios
+      .put(`http://localhost:5000/api/movies/${id}`, movie)
+      .then((res) => {
+        setMovie(res.data);
+        push(`/movies/${id}`);
+      })
+      .catch((err) => console.log({ err }));
 	}
 	
 	const { title, director, genre, metascore, description } = movie;
@@ -41,7 +59,7 @@ const EditMovieForm = (props) => {
 						<input value={title} onChange={handleChange} name="title" type="text" className="form-control"/>
 					</div>
 					<div className="form-group">
-						<label>Director</label>
+						<label>Director </label>
 						<input value={director} onChange={handleChange} name="director" type="text" className="form-control"/>
 					</div>
 					<div className="form-group">
