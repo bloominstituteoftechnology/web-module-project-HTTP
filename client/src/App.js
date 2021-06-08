@@ -58,6 +58,9 @@ const App = (props) => {
             <Route path="/">
               <Redirect to="/movies"/>
             </Route>
+            <Route>
+              <EditMovieForm />
+            </Route>
           </Switch>
         </div>
       </div>
