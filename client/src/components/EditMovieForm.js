@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const EditMovieForm = (props) => {
-	const { id } = useParams()
 	const { push } = useHistory();
+	const { setMovies } = props;
 
 	const [movie, setMovie] = useState({
 		title: "",
@@ -15,6 +15,8 @@ const EditMovieForm = (props) => {
 		metascore: 0,
 		description: ""
 	});
+
+	const { id } = useParams()
 
 	useEffect(() => {
 		axios.get(`http://localhost:5000/api/movies/${id}`)
@@ -35,16 +37,18 @@ const EditMovieForm = (props) => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// console.log(movie);
-		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
-			.then(res => {
-				props.setMovies(res.data)
-			})
-			.catch(err => {
-				console.log(err);
-			})
-		push(`/movies/${id}`)
+		console.log(movie);
 	}
+	axios.put(`http://localhost:5000/api/movies/${id}`, movie)
+		.then(res => {
+			setMovies(res.data);
+			push(`/movies/${id}`);
+		})
+		.catch(err => {
+			console.log(err);
+		})
+	push(`/movies/${id}`)
+
 
 	const { title, director, genre, metascore, description } = movie;
 
