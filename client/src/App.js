@@ -1,4 +1,4 @@
-// comment to make initial commit
+// comment to make initial commit.
 
 import React, { useEffect, useState } from "react";
 
