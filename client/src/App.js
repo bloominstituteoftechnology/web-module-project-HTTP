@@ -26,13 +26,18 @@ const App = (props) => {
       });
   }, []);
 
-  const deleteMovie = (id)=> {
-    // axios.delete(`http://localhost:5000/api/movies/${id}`)
-    //         .then(res => {
-    //             setMovies(res.data);
-    //             props.history.push('/movies');
-    //         })
+  const deleteMovie = (id) => {
+    //  setMovies(movies.filter(movie => movie != id))
+    let newMovies = movies.filter(movie => movie.id !== id)
+    setMovies(newMovies)
   }
+
+    // const deleteMovie = (id) => {
+    //     let newMovies = movies.filter(movie => movie !== id)
+    //     return setMovies(newMovies)
+    //  }
+
+  console.log(movies)
 
   const addToFavorites = (movie) => {
     
