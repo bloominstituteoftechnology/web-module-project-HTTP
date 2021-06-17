@@ -30,6 +30,7 @@ const Movie = (props) => {
                 <div className="modal-body">
                     <div className="flexContainer">
 
+
                         <section className="movie-details">
                             <div>
                                 <label>Title: <strong>{movie.title}</strong></label>
