@@ -60,15 +60,18 @@ let movies = [
 
 let movieId = movies.length;
 
+// Items Index endpoint
 app.get("/api/movies", (req, res) => {
   res.send(movies);
 });
 
+// Item show route (get item by Id)
 app.get("/api/movies/:id", (req, res) => {
   const movie = movies.filter(movie => `${movie.id}` === req.params.id)[0];
   res.status(200).json(movie);
 });
 
+// create item endpoint
 app.post("/api/movies", (req, res) => {
   if (req.body.title !== undefined) {
     const newMovie = req.body;
@@ -79,6 +82,7 @@ app.post("/api/movies", (req, res) => {
   res.status(201).json(movies);
 });
 
+// Edit Item by id endpoint
 app.put("/api/movies/:id", (req, res) => {
   if (!req.params.id)
     res.status(400).send("Your request is missing the movie id");
@@ -101,6 +105,7 @@ app.put("/api/movies/:id", (req, res) => {
   res.status(200).send(movies);
 });
 
+// Delete item by Id endpoint
 app.delete("/api/movies/:id", (req, res) => {
   if (!req.params.id)
     res.status(400).send("Your request is missing the movie id");

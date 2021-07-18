@@ -6,8 +6,10 @@ import axios from 'axios';
 
 const EditMovieForm = (props) => {
 	const { push } = useHistory();
+	const { id } = useParams()
 
-	const [movie, setMovie] = useState({
+	// Form to edit a new Movie to the List
+	const [movieFormValues, setMovieFormValues] = useState({
 		title:"",
 		director: "",
 		genre: "",
@@ -16,24 +18,36 @@ const EditMovieForm = (props) => {
 	});
 	
 	const handleChange = (e) => {
-        setMovie({
-            ...movie,
-            [e.target.name]: e.target.value
+        setMovieFormValues({
+            ...movieFormValues,
+            [e.target.name]: e.target.value // named parameter values for input handling
         });
     }
 
     const handleSubmit = (e) => {
 		e.preventDefault();
+		console.log(movieFormValues)
+		// axios.post("endpoin something url", movie)
+		axios.put("localhost:5000/api/movies", movieFormValues)
+		// already formatted perfectly to be the request body because we matched they keys and variable naming in intialItem Above
+		.then(res => {
+			console.log("Item added!", res);
+			// Update items array with res.data
+			props.setItems(res.data);
+			push("/movie-list");
+		})
+		.catch(err => console.log("error editing item", err))
+
 	}
 	
-	const { title, director, genre, metascore, description } = movie;
+	const { title, director, genre, metascore, description } = movieFormValues;
 
     return (
 	<div className="col">
 		<div className="modal-content">
 			<form onSubmit={handleSubmit}>
 				<div className="modal-header">						
-					<h4 className="modal-title">Editing <strong>{movie.title}</strong></h4>
+					<h4 className="modal-title">Editing <strong>{movieFormValues.title}</strong></h4>
 				</div>
 				<div className="modal-body">					
 					<div className="form-group">
