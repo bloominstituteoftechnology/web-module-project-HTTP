@@ -23,9 +23,16 @@ const App = (props) => {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  });
 
   const deleteMovie = (id)=> {
+    axios.delete(`http://localhost:5000/api/movies/${id}`)
+        .then(res=>{
+            console.log('delete movie')
+        })
+        .catch(err=>{
+            console.log(err.response);
+        })
   }
 
   const addToFavorites = (movie) => {
@@ -45,10 +52,11 @@ const App = (props) => {
         
           <Switch>
             <Route path="/movies/edit/:id">
+              <EditMovieForm />
             </Route>
 
             <Route path="/movies/:id">
-              <Movie/>
+              <Movie deleteMovie={deleteMovie}/>
             </Route>
 
             <Route path="/movies">
