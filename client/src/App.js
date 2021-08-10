@@ -23,7 +23,7 @@ const App = (props) => {
       .catch(err => {
         console.log(err);
       });
-  }, []);
+  });
 
   const deleteMovie = (id)=> {
   }
@@ -45,6 +45,7 @@ const App = (props) => {
         
           <Switch>
             <Route path="/movies/edit/:id">
+              <EditMovieForm />
             </Route>
 
             <Route path="/movies/:id">
