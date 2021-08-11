@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
+import AddMovieForm from './components/AddMovieForm'
 
 import MovieHeader from './components/MovieHeader';
 
@@ -26,11 +27,10 @@ const App = (props) => {
   }, []);
 
   const deleteMovie = (id)=> {
-    const badMovie = movies.filter(movie => movie.id !== id)
     axios
     .delete(`http://localhost:5000/api/movies/${id}`)
     .then(response => {
-      setMovies(badMovie)
+      console.log(response.data);
     })
     .catch(error => {
       console.log(error);
@@ -53,6 +53,10 @@ const App = (props) => {
           <FavoriteMovieList favoriteMovies={favoriteMovies}/>
         
           <Switch>
+            <Route exact path="/movies/add">
+              <AddMovieForm setMovies={setMovies} />
+            </Route>
+
             <Route path="/movies/edit/:id">
             <EditMovieForm setMovies={setMovies}/>
             </Route>
