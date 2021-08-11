@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
 
+const BASE_URL = "http://localhost:5000/api/movies";
+
 const EditMovieForm = (props) => {
+  //eslint-disable-next-line
   const { push } = useHistory();
   const { id } = useParams();
 
@@ -19,10 +21,10 @@ const EditMovieForm = (props) => {
   useEffect(() => {
     console.log(`id: ${id}`);
     axios
-      .get(`http://localhost:5000/api/movies/${id}`)
+      .get(`${BASE_URL}/${id}`)
       .then((res) => setMovie(res.data))
       .catch((err) => console.error(err));
-  }, []);
+  }, [id]);
 
   const handleChange = (e) => {
     setMovie({
@@ -33,6 +35,10 @@ const EditMovieForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    axios
+      .put(`${BASE_URL}/${id}`, movie)
+      .then((res) => console.log(res)) //how to get data back up the tree? What do I do with this response?
+      .catch((err) => console.error(err));
   };
 
   const { title, director, genre, metascore, description } = movie;

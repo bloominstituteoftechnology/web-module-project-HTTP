@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
-
 import { Route, Switch, Redirect, useParams } from "react-router-dom";
+import axios from "axios";
+
 import MovieList from "./components/MovieList";
 import Movie from "./components/Movie";
-
 import MovieHeader from "./components/MovieHeader";
-
 import EditMovieForm from "./components/EditMovieForm";
 import FavoriteMovieList from "./components/FavoriteMovieList";
 
-import axios from "axios";
-
 const App = (props) => {
   const [movies, setMovies] = useState([]);
+  //eslint-disable-next-line
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const id = useParams();
 
@@ -27,8 +25,10 @@ const App = (props) => {
       });
   }, []);
 
+  //eslint-disable-next-line
   const deleteMovie = (id) => {};
 
+  //eslint-disable-next-line
   const addToFavorites = (movie) => {};
 
   return (

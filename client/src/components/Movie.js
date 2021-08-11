@@ -4,11 +4,13 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Movie = (props) => {
+    //eslint-disable-next-line
     const { addToFavorites } = props;
 
     const [movie, setMovie] = useState('');
 
     const { id } = useParams();
+    //eslint-disable-next-line
     const { push } = useHistory();
 
     useEffect(()=>{
