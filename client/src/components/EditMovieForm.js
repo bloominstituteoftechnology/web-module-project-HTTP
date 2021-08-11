@@ -37,7 +37,10 @@ const EditMovieForm = (props) => {
     e.preventDefault();
     axios
       .put(`${BASE_URL}/${id}`, movie)
-      .then((res) => console.log(res)) //how to get data back up the tree? What do I do with this response?
+      .then((res) => {
+        props.setMovies(res.data);
+        push(`/movies/${id}`);
+      }) //how to get data back up the tree? What do I do with this response?
       .catch((err) => console.error(err));
   };
 
