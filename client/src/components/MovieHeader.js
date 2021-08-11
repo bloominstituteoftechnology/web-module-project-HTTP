@@ -1,5 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+
+const { push } = useHistory
+
+const handleAdd = event => {
+    event.preventDefault()
+    push('/addMovie')
+}
 
 const MovieHeader = ()=> {
     return(<div className="table-title">
@@ -8,7 +15,7 @@ const MovieHeader = ()=> {
             <h2>IMDB Movie Database</h2>
         </div>
         <div className="col-sm-6">
-            <Link className="btn btn-success"><i className="material-icons">&#xE147;</i> <span>Add New Movie</span></Link>
+            <Link className="btn btn-success"><i className="material-icons">&#xE147;</i> <span onClick={handleAdd}>Add New Movie</span></Link>
             <Link to="/movies" className="btn btn-primary">View All Movies</Link>
         </div>
         </div>
