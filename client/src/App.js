@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch, Redirect, useParams } from "react-router-dom";
+import {
+  Route,
+  Switch,
+  Redirect,
+  useParams,
+  useHistory,
+} from "react-router-dom";
 import axios from "axios";
 
 import MovieList from "./components/MovieList";
@@ -8,7 +14,10 @@ import MovieHeader from "./components/MovieHeader";
 import EditMovieForm from "./components/EditMovieForm";
 import FavoriteMovieList from "./components/FavoriteMovieList";
 
+const BASE_URL = "http://localhost:5000/api/movies";
+
 const App = (props) => {
+  const { push } = useHistory();
   const [movies, setMovies] = useState([]);
   //eslint-disable-next-line
   const [favoriteMovies, setFavoriteMovies] = useState([]);
@@ -26,7 +35,16 @@ const App = (props) => {
   }, []);
 
   //eslint-disable-next-line
-  const deleteMovie = (id) => {};
+  const deleteMovie = (id) => {
+    axios
+      .delete(`${BASE_URL}/${id}`)
+      .then((res) => {
+        console.log(res.data);
+        push("/movies");
+      }) //why is res.data the id of the removed item?
+      // how do I update the UI without the updated array of movies?
+      .catch((err) => console.error(err));
+  };
 
   //eslint-disable-next-line
   const addToFavorites = (movie) => {};
@@ -51,7 +69,7 @@ const App = (props) => {
             </Route>
 
             <Route path="/movies/:id">
-              <Movie />
+              <Movie setMovies={setMovies} deleteMovie={deleteMovie} />
             </Route>
 
             <Route path="/movies">

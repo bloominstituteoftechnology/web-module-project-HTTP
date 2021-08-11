@@ -40,7 +40,7 @@ const EditMovieForm = (props) => {
       .then((res) => {
         props.setMovies(res.data);
         push(`/movies/${id}`);
-      }) //how to get data back up the tree? What do I do with this response?
+      })
       .catch((err) => console.error(err));
   };
 
