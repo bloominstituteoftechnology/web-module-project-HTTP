@@ -13,6 +13,7 @@ import Movie from "./components/Movie";
 import MovieHeader from "./components/MovieHeader";
 import EditMovieForm from "./components/EditMovieForm";
 import FavoriteMovieList from "./components/FavoriteMovieList";
+import AddMovieForm from "./components/AddMovieForm";
 
 const BASE_URL = "http://localhost:5000/api/movies";
 
@@ -66,6 +67,10 @@ const App = (props) => {
           <Switch>
             <Route path="/movies/edit/:id">
               <EditMovieForm id={id} setMovies={setMovies} />
+            </Route>
+
+            <Route path="/movies/addMovie">
+              <AddMovieForm setMovies={setMovies} />
             </Route>
 
             <Route path="/movies/:id">
