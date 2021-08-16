@@ -125,4 +125,4 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 ## Rick Mansfield's Pull/push trail for Web Modual HTTP Movie Proj
 
-- [link for convenience]()
+- [link for convenience](https://github.com/LambdaSchool/web-module-project-HTTP/pull/54)
