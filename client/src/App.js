@@ -46,7 +46,7 @@ const App = (props) => {
           <Switch>
             <Route path="/movies/edit/:id">
               {/* 1 First, we need to be able to navigate to the edit movie component. In App.js, add in the `<EditMovieForm> `component to the supplied edit route. */}
-              <EditMovieForm />
+              <EditMovieForm setMovies={setMovies}/>
             </Route>
 
             <Route path="/movies/:id">
