@@ -35,10 +35,19 @@ const EditMovieForm = (props) => {
         });
     }
 
-    const handleSubmit = (e) => {
+	//4. At this point, nothing happens when the edit form is submitted. Add in the api call needed to update the server with our updated movie data.
+	const handleSubmit = (e) => {
 		e.preventDefault();
+		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
+			.then(res => {
+				setMovie(res.data);
+				push(`/movies/${id}`);
+			})
+			.catch(err => {
+				console.log(err);
+			})
 	}
-	
+
 	const { title, director, genre, metascore, description } = movie;
 
     return (
