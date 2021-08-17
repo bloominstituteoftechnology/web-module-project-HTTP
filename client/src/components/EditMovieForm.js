@@ -16,6 +16,17 @@ const EditMovieForm = (props) => {
 		metascore: 0,
 		description: ""
 	});
+
+	//3. We need to be able to load in the current movie's attributes into our local form state. When `EditMovieForm` mount, retrieve our current id's movie from the api and save the data returned to local state. Hence a useEffect and GET req, like on didMount here and add the ${id}
+		useEffect(() => {
+			axios.get(`http://localhost:5000/api/movies/${id}`)
+				.then(res => {
+					setMovie(res.data);
+				})
+				.catch(err => {
+					console.log(err.response);
+				})
+		}, [id]);
 	
 	const handleChange = (e) => {
         setMovie({
