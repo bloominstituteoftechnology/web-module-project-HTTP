@@ -6,6 +6,8 @@ import axios from 'axios';
 
 const EditMovieForm = (props) => {
 	const { push } = useHistory();
+		//2 Next, we need to grab the id being passed into the component through the url. Use the `useParams` hook to get the id value.
+		const { id } = useParams();
 
 	const [movie, setMovie] = useState({
 		title:"",
