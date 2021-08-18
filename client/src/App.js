@@ -10,6 +10,7 @@ import EditMovieForm from './components/EditMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
 
 import axios from 'axios';
+import AddMovieForm from './components/AddMovieForm';
 
 const App = (props) => {
   const [movies, setMovies] = useState([]);
@@ -45,14 +46,22 @@ const App = (props) => {
           <FavoriteMovieList favoriteMovies={favoriteMovies} />
 
           <Switch>
-            <Route path="/movies/edit/:id">
-              {/* 1 First, we need to be able to navigate to the edit movie component. In App.js, add in the `<EditMovieForm> `component to the supplied edit route. */}
+            {/* 1 First, we need to be able to navigate to the edit movie component. In App.js, add in the `<EditMovieForm> `component to the supplied edit route. Remember it MUST go before edit/:id Route to work*/}
+            {/* <Route path="/movies/edit/:id">
               <EditMovieForm setMovies={setMovies}/>
+            </Route> */}
+            <Route path='/movies/add' render={props =>
+              <AddMovieForm {...props} setMovies={setMovies} />}>
+            </Route>
+
+            <Route path="/movies/edit/:id" render={props => <EditMovieForm {...props} setMovies={setMovies} />}>
             </Route>
 
             <Route path="/movies/:id">
               <Movie />
             </Route>
+
+
 
             <Route path="/movies">
               <MovieList movies={movies} />

@@ -12,7 +12,7 @@ const EditMovieForm = (props) => {
 	const { id } = useParams();
 
 	//5 Don't forget to make sure that your server data and your local state are in sync! Make any changes the edit route needed to give the edit form access to App's `setMovies` method.
-	const { setMovies } = props; // look at the handleSubmit carefully and make sure the setMovies is plural too. 
+	// const { setMovies } = props; // this is another option. look at the handleSubmit carefully and make sure the setMovies is plural too. 
 
 
 	const [movie, setMovie] = useState({
@@ -32,7 +32,7 @@ const EditMovieForm = (props) => {
 			.catch(err => {
 				console.log(err.response);
 			})
-	}, [id]);
+	}, []);
 
 	const handleChange = (e) => {
 		setMovie({
@@ -45,7 +45,7 @@ const EditMovieForm = (props) => {
 		e.preventDefault();
 		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
 			.then(res => {
-				setMovies(res.data);//6 Now that we have access to `setMovies`, make sure the updated list of movies is saved to our global state.
+				props.setMovies(res.data);//6 Now that we have access to `setMovies`, make sure the updated list of movies is saved to our global state.
 				console.log('res.data from handlesubmit EditMovieForm.js', res.data);//I can see from this console.lot we're all set. pun intended. 
 				push(`/movies/${id}`);//7 Redirect the user to the currently edited movie's individual info page.
 			})
