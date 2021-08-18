@@ -53,15 +53,15 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 * [x] 2 Next, we need to grab the id being passed into the component through the url. Use the `useParams` hook to get the id value. (note to self... got to EditMovieForm)
 
-* [ ] 3. We need to be able to load in the current movie's attributes into our local form state. When `EditMovieForm` mount, retrieve our current id's movie from the api and save the data returned to local state.
+* [x] 3. We need to be able to load in the current movie's attributes into our local form state. When `EditMovieForm` mount, retrieve our current id's movie from the api and save the data returned to local state.
 
-* [ ] 4. At this point, nothing happens when the edit form is **submitted.** Add in the api call needed to update the server with our updated movie data. (note to self update the handleSubmit. in EditMovieForm.js)
+* [x] 4. At this point, nothing happens when the edit form is **submitted.** Add in the api call needed to update the server with our updated movie data. (note to self update the handleSubmit. in EditMovieForm.js)
 
-* [ ] 5 Don't forget to make sure that your server data and your local state are in sync! Make any changes the edit route needed to give the edit form access to App's `setMovies` method.
+* [x] 5 Don't forget to make sure that your server data and your local state are in sync! Make any changes the edit route needed to give the edit form access to App's `setMovies` method.
 
-* [ ] 6 Now that we have access to `setMovies`, made sure the updated list of movies is saved to our global state.
+* [x] 6 Now that we have access to `setMovies`, made sure the updated list of movies is saved to our global state.
 
-* [ ] 7 Redirect the user to the currently edited movie's individual info page.
+* [x] 7 Redirect the user to the currently edited movie's individual info page.
 
 #### Deleting a Movie
 > *You added in a CRUD feature! Good job! Now let's get deleted squared away...*

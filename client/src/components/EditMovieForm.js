@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const EditMovieForm = (props) => {
-	const { push } = useHistory();
+	console.log('Here are EditMovieForm props: ', props)
+	const { push } = useHistory();//7 Redirect the user to the currently edited movie's individual info page. also see handleSubmit below
+
 	//2 Next, we need to grab the id being passed into the component through the url. Use the `useParams` hook to get the id value.
 	const { id } = useParams();
 
@@ -25,8 +27,7 @@ const EditMovieForm = (props) => {
 	useEffect(() => {
 		axios.get(`http://localhost:5000/api/movies/${id}`)
 			.then(res => {
-				setMovie(res.data);//6 Now that we have access to `setMovies`, make sure the updated list of movies is saved to our global state.
-				console.log('res.data from handlesubmit', res.data);//I can see from this console.lot we're all set. pun intended. 
+				setMovie(res.data);
 			})
 			.catch(err => {
 				console.log(err.response);
@@ -39,7 +40,6 @@ const EditMovieForm = (props) => {
 			[e.target.name]: e.target.value
 		});
 	}
-
 	//4. At this point, nothing happens when the edit form is submitted. Add in the api call needed to update the server with our updated movie data.
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -47,10 +47,10 @@ const EditMovieForm = (props) => {
 			.then(res => {
 				setMovies(res.data);//6 Now that we have access to `setMovies`, make sure the updated list of movies is saved to our global state.
 				console.log('res.data from handlesubmit EditMovieForm.js', res.data);//I can see from this console.lot we're all set. pun intended. 
-				push(`/movies/${id}`);
+				push(`/movies/${id}`);//7 Redirect the user to the currently edited movie's individual info page.
 			})
 			.catch(err => {
-				console.log(err);
+				console.log('Error:', err);
 			})
 	}
 
