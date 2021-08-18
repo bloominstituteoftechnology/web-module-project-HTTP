@@ -45,7 +45,8 @@ const EditMovieForm = (props) => {
 		e.preventDefault();
 		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
 			.then(res => {
-				setMovie(res.data);
+				setMovies(res.data);//6 Now that we have access to `setMovies`, make sure the updated list of movies is saved to our global state.
+				console.log('res.data from handlesubmit EditMovieForm.js', res.data);//I can see from this console.lot we're all set. pun intended. 
 				push(`/movies/${id}`);
 			})
 			.catch(err => {
