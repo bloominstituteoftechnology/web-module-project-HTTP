@@ -26,6 +26,7 @@ const Movie = (props) => {
             .then(res => {
                 props.deleteMovie(id);
                 push("/movies")
+                
             })
             .catch(err => {
                 console.log(err);
