@@ -25,6 +25,8 @@ const EditMovieForm = (props) => {
 			console.log(err);
 		  });
 	  }, []);
+
+	  
 	const handleChange = (e) => {
         setMovie({
             ...movie,
