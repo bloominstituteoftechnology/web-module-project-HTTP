@@ -14,12 +14,17 @@ const Movie = (props) => {
     useEffect(()=>{
         axios.get(`http://localhost:5000/api/movies/${id}`)
             .then(res=>{
+                console.log(res)
                 setMovie(res.data);
             })
             .catch(err=>{
                 console.log(err.response);
             })
     }, [id]);
+
+    // const handleDelete = () =>{
+    
+    // }
 
     return(<div className="modal-page col">
         <div className="modal-dialog">
