@@ -25,7 +25,8 @@ const EditMovieForm = (props) => {
 	useEffect(() => {
 		axios.get(`http://localhost:5000/api/movies/${id}`)
 			.then(res => {
-				setMovie(res.data);
+				setMovie(res.data);//6 Now that we have access to `setMovies`, make sure the updated list of movies is saved to our global state.
+				console.log('res.data from handlesubmit', res.data);//I can see from this console.lot we're all set. pun intended. 
 			})
 			.catch(err => {
 				console.log(err.response);
