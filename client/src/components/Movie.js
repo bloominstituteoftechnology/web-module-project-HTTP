@@ -4,7 +4,7 @@ import { Link, useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Movie = (props) => {
-    const { addToFavoritesm, deleteMovie} = props;//9b you must add "deleteMovie here in props to "see" the res data produced from 9A below in the handle click. note at this point deleteMovie in App.js is NOT complete nore is handleClick YET below. That occurs in other steps. 
+    const { addToFavoritesm, deleteMovie} = props;//9b you must add "deleteMovie here in props to "see" the res data produced from 9A below in the handle click. note at this point deleteMovie in App.js is NOT complete nore is handleClick YET below. That occurs in other steps. This is also Step 11. 
 
     const [movie, setMovie] = useState('');
 
@@ -27,6 +27,9 @@ const Movie = (props) => {
             .then(res => {
                 console.log('Movie.js HandleClick res:', res);
 
+            })
+            .catch(err => {
+                console.log('err', err)
             })
     }
 
