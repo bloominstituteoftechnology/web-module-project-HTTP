@@ -59,27 +59,27 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 * [x] 5 Don't forget to make sure that your server data and your local state are in sync! Make any changes the edit route needed to give the edit form access to App's `setMovies` method.
 
-* [x] 6 Now that we have access to `setMovies`, made sure the updated list of movies is saved to our global state.
+* [x] 6 Now that we have access to `setMovies`, make sure the updated list of movies is saved to our global state.(note to self see EditMovieForm.js handleSubmit)
 
 * [x] 7 Redirect the user to the currently edited movie's individual info page.
 
 #### Deleting a Movie
 > *You added in a CRUD feature! Good job! Now let's get deleted squared away...*
 
-* [ ] 8 Identify the component that holds the "button" needed for deletion. Add an event handler to that button.
+* [x] 8 Identify the component that holds the "button" needed for deletion. Add an event handler to that button.(Note to self... I used Dev Tools under Components to narrow in on the correct component.i.e. Movie.js)
 
-* [ ] 9 Build an event handler that makes a request to delete the currently viewed movie. Observe what is returned from the request.
+* [x] 9 Build an event handler that makes a request to delete the currently viewed movie. Observe what is returned from the request.(note you must put "deleteMovie" into props at the top of Move.js eventhough the function is not yet complete in App.js in order to "see" the res data.Notice that the "res" is the object data) 
 
-* [ ] 10 You will once again need to keep the server and state data in sync. In `App.js`, complete the `deleteMovie` method so that it receives an id, filters out any movie with that id and sets state to that resultant movie list.
+* [x] 10 You will once again need to keep the server and state data in sync. In `App.js`, complete the `deleteMovie` method so that it receives an id, filters out any movie with that id and sets state to that resultant movie list.
 
-* [ ] 11 Pass `deleteMovie` into the approprate component.
+* [x] 11 Pass `deleteMovie` into the approprate component. (note to self ...This step is confusing as it was necessary to complete step 9 so you should have already done this in step 9 in order to be able to "see" the res data.) 
 
-* [ ] 12 Run `deleteMovie` on the currently selected movie when your delete request is complete and redirect the user to the `/movies` route.
+* [x] 12 Run `deleteMovie` on the currently selected movie when your delete request is complete and redirect the user to the `/movies` route.
 
 #### Adding a Movie
 > *Alright! You ready! Let's see you use the skills of the previous steps to build a crud function from start to finish.*
 
-* [ ] 13 Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state.
+* [ ] 13 Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state. (Note to self basically other than changing the name from EditMovieForm to AddMovieForm everything **except** the __useEffect__ and __handleSubmit__ are identical to EcitMovieForm)
 
 * [ ] 14 Add in a route that allows access to `AddMovieForm`.
 
