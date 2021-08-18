@@ -50,6 +50,7 @@ const App = (props) => {
             {/* <Route path="/movies/edit/:id">
               <EditMovieForm setMovies={setMovies}/>
             </Route> */}
+                        {/* notice the method above is more "correct" becuase the next method that i actually use doesn't "need" the props passed. They don't do anything...but this method might help in other situations where render is needed to get props passed in.  */}
             <Route path='/movies/add' render={props =>
               <AddMovieForm {...props} setMovies={setMovies} />}>
             </Route>
