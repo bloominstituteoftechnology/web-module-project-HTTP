@@ -26,7 +26,9 @@ const Movie = (props) => {
         axios.delete(`http://localhost:5000/api/movies/${id}`)
             .then(res => {
                 console.log('Movie.js HandleClick res:', res);
-
+                //12 Run `deleteMovie` on the currently selected movie when your delete request is complete and redirect the user to the `/movies` route.
+                deleteMovie(id)
+                push('/movies')
             })
             .catch(err => {
                 console.log('err', err)
