@@ -85,9 +85,9 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 * [x] 15 Locate the part of the ui that should redirect to your new `AddMovieForm`. Make that button works as expected. (Note to self...The button originates in MovieHeader.js. I found this by righ clicking on the "Add New Movie Button and selecting inspect in chrome dev tools under "componenets" it shows the location. Since we already just Routed it in App.js, now we just add "to="/movies/add"" to the button in MovieHeader.js's appropriate "<Link>")
 
-* [ ] 16 In `AddMovieForm,` add an event handler for form submission. When the form is submitted, run the approprate request for adding a movie with the component's state values. 
+* [x] 16 In `AddMovieForm,` add an event handler for form submission. When the form is submitted, run the approprate request for adding a movie with the component's state values. 
 
-* [ ] 17 Make sure your component has access to and runs and modifications needed to global state and redirects to `/movies` after creation.
+* [x] 17 Make sure your component has access to and runs and modifications needed to global state and redirects to `/movies` after creation.
 
 ### Stretch goals
 - 18 Make the added DeleteMovieModal appear and be reacted to before deletion occurs.
