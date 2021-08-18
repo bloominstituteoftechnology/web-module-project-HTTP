@@ -59,7 +59,7 @@ app.get("/api/movies", (req, res) => {
 });
 
 app.get("/api/movies/:id", (req, res) => {
-  const movie = movies.filter(movie => `${movie.id}` === req.params.id)[0];
+  const movie = movies.find(movie => `${movie.id}` === req.params.id);
   res.status(200).json(movie);
 });
 
@@ -87,12 +87,9 @@ app.put("/api/movies/:id", (req, res) => {
       .status(422)
       .send("Make sure your request body has all the fields it needs");
   }
-  movies = movies.map(movie => {
-    if (`${movie.id}` === req.params.id) {
-      return req.body;
-    }
-    return movie;
-  });
+  movies = movies.map(movie => 
+    `${movie.id}` === req.params.id ? req.body : movie
+  );
   res.status(200).send(req.body);
 });
 
