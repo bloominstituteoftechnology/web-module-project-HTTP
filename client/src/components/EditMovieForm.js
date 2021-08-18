@@ -16,8 +16,19 @@ const EditMovieForm = (props) => {
 		metascore: 0,
 		description: ""
 	});
-	
-	const handleChange = (e) => {
+
+	useEffect(()=>{
+        axios.get(`http://localhost:5000/api/movies/${id}`)
+          .then(res => {
+              console.log("hereiam",res)
+            setMovie(res.data);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }, []);
+
+    const handleChange = (e) => {
         setMovie({
             ...movie,
             [e.target.name]: e.target.value
@@ -29,7 +40,7 @@ const EditMovieForm = (props) => {
 		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
 			.then(res => {
 				setMovies(res.data)
-				push(`movies/${id}`)
+				push(`/movies/${id}`)
 			})
 			.catch(err => console.log(err))
 	}
@@ -46,7 +57,10 @@ const EditMovieForm = (props) => {
 				<div className="modal-body">					
 					<div className="form-group">
 						<label>Title</label>
-						<input value={title} onChange={handleChange} name="title" type="text" className="form-control"/>
+						<input 
+							value={title} 
+							onChange={handleChange} 
+							name="title" type="text" className="form-control"/>
 					</div>
 					<div className="form-group">
 						<label>Director</label>
@@ -64,11 +78,16 @@ const EditMovieForm = (props) => {
 						<label>Description</label>
 						<textarea value={description} onChange={handleChange} name="description" className="form-control"></textarea>
 					</div>
-									
 				</div>
 				<div className="modal-footer">			    
 					<input type="submit" className="btn btn-info" value="Save"/>
-					<Link to={`/movies/1`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
+					<Link to={`/movies/1`}>
+						<input 
+							type="button" 
+							className="btn btn-default" 
+							value="Cancel"
+						/>
+					</Link>
 				</div>
 			</form>
 		</div>
