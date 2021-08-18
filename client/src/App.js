@@ -36,8 +36,11 @@ const App = (props) => {
       .catch(err => console.log(err))
   }
 
-  const addToFavorites = (movie) => {
-    
+  const addToFavorites = (movie) => { 
+    favoriteMovies.some(m => m.id === movie.id) ?
+    setFavoriteMovies(favoriteMovies.filter(m => m.id !== movie.id))
+    :
+    setFavoriteMovies([...favoriteMovies, movie])
   }
 
   return (
@@ -61,7 +64,7 @@ const App = (props) => {
             </Route>
 
             <Route path="/movies/:id">
-              <Movie deleteMovie={deleteMovie}/>
+              <Movie deleteMovie={deleteMovie} addToFavorites={addToFavorites}/>
             </Route>
 
             <Route path="/movies">

@@ -2,10 +2,9 @@ import React from 'react';
 
 import MovieListItem from './MovieListItem';
 import MovieFooter from './MovieFooter';
-import FavoriteMovieList from './FavoriteMovieList';
 
 const MovieList = (props)=> {
-    const { movies, favoriteMovies } = props;
+    const { movies } = props;
 
     return (
         <div className="col">
@@ -19,6 +18,7 @@ const MovieList = (props)=> {
                     <th></th>
                 </tr>
                 </thead>
+
 
                 <tbody>
                     {
