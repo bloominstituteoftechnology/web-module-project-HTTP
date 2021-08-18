@@ -15,16 +15,9 @@ const AddMovieForm = (props) => {
 		metascore: 0,
 		description: ""
 	});
-	useEffect(()=>{
-		axios.get(`http://localhost:5000/api/movies/${id}`)
-		  .then(res => {
-			  console.log("hereiam",res)
-			setMovie(res.data);
-		  })
-		  .catch(err => {
-			console.log(err);
-		  });
-	  }, []);
+	
+
+
 	const handleChange = (e) => {
         setMovie({
             ...movie,
@@ -34,10 +27,10 @@ const AddMovieForm = (props) => {
 
     const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
+		axios.post(`http://localhost:5000/api/movies/`, movie)
 		.then(res=> {
 			setMovies(res.data)
-			push(`/movies/${id}`)
+			push(`/movies/`)
 		})
 	}
 	

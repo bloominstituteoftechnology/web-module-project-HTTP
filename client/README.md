@@ -59,15 +59,15 @@ CRUD applications are the foundation of most web applications. Being able to man
 #### Adding a Movie
 > *Alright! You ready! Let's see you use the skills of the previous steps to build a crud function from start to finish.*
 
-* [ ] Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state.
+* [ x] Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state.
 
-* [ ] Add in a route that allows access to `AddMovieForm`.
+* [x ] Add in a route that allows access to `AddMovieForm`.
 
-* [ ] Locate the part of the ui that should redirect to your new `AddMovieForm`. Make that button works as expected.
+* [ xx] Locate the part of the ui that should redirect to your new `AddMovieForm`. Make that button works as expected.
 
-* [ ] In `AddMovieForm,` add an event handler for form submission. When the form is submitted, run the approprate request for adding a movie with the component's state values.
+* [x ] In `AddMovieForm,` add an event handler for form submission. When the form is submitted, run the approprate request for adding a movie with the component's state values.
 
-* [ ] Make sure your component has access to and runs and modifications needed to global state and redirects to `/movies` after creation.
+* [x ] Make sure your component has access to and runs and modifications needed to global state and redirects to `/movies` after creation.
 
 ### Stretch goals
 - Make the added DeleteMovieModal appear and be reacted to before deletion occurs.
