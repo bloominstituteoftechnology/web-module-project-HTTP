@@ -79,13 +79,13 @@ CRUD applications are the foundation of most web applications. Being able to man
 #### Adding a Movie
 > *Alright! You ready! Let's see you use the skills of the previous steps to build a crud function from start to finish.*
 
-* [ ] 13 Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state. (Note to self basically other than changing the name from EditMovieForm to AddMovieForm everything **except** the __useEffect__ and __handleSubmit__ are identical to EcitMovieForm)
+* [x] 13 Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state. (Note to self basically other than changing the name from EditMovieForm to AddMovieForm everything **except** the __useEffect__ and __handleSubmit__ are identical to EcitMovieForm)
 
-* [ ] 14 Add in a route that allows access to `AddMovieForm`.
+* [x] 14 Add in a route that allows access to `AddMovieForm`. (see App.js routes and imorts, then got to 15 to fix handleChange and then 16 to handle submit. THe app is broken until those are fixed. )
 
-* [ ] 15 Locate the part of the ui that should redirect to your new `AddMovieForm`. Make that button works as expected.
+* [x] 15 Locate the part of the ui that should redirect to your new `AddMovieForm`. Make that button works as expected. (Note to self...The button originates in MovieHeader.js. I found this by righ clicking on the "Add New Movie Button and selecting inspect in chrome dev tools under "componenets" it shows the location. Since we already just Routed it in App.js, now we just add "to="/movies/add"" to the button in MovieHeader.js's appropriate "<Link>")
 
-* [ ] 16 In `AddMovieForm,` add an event handler for form submission. When the form is submitted, run the approprate request for adding a movie with the component's state values.
+* [ ] 16 In `AddMovieForm,` add an event handler for form submission. When the form is submitted, run the approprate request for adding a movie with the component's state values. 
 
 * [ ] 17 Make sure your component has access to and runs and modifications needed to global state and redirects to `/movies` after creation.
 
