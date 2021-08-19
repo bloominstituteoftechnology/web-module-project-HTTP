@@ -31,6 +31,10 @@ const Movie = (props) => {
         })
     }
 
+    const favHandler = (id)=>{
+        addToFavorites(movie.id) 
+    }
+
     return(
     <div className="modal-page col">
         <div className="modal-dialog">
@@ -61,7 +65,7 @@ const Movie = (props) => {
                         </section>
                         
                         <section>
-                            <span className="m-2 btn btn-dark">Favorite</span>
+                            <span className="m-2 btn btn-dark" onClick={favHandler}>Favorite</span>
                             <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
                             <span className="delete"><input type="button" className="m-2 btn btn-danger" value="Delete" onClick={handleDelete}/></span>
                         </section>

@@ -31,7 +31,8 @@ const App = (props) => {
   }
 
   const addToFavorites = (movie) => {
-    
+    console.log(movie)
+    setFavoriteMovies(movies.filter(index => index.id === movie))
   }
 
   return (
@@ -50,7 +51,7 @@ const App = (props) => {
               <EditMovieForm setMovies={setMovies}/>
             </Route>
           <Route path="/movies/:id">
-              <Movie deleteMovie={deleteMovie}/>
+              <Movie deleteMovie={deleteMovie} addToFavorites={addToFavorites}/>
             </Route>
 
             <Route path="/movies">
