@@ -54,7 +54,7 @@ const App = (props) => {
               <Movie setMovies={setMovies} deleteMovie={deleteMovie}/>
             </Route>
             
-            <Route path='/movies/add'>
+            <Route path='/add'>
               <AddMovie setMovies={setMovies} />
             </Route>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 const initialValue = {
@@ -25,7 +25,7 @@ const AddMovie = (props) => {
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		axios
-			.post('http://localhost:5000/api/movies', newMovie)
+			.post('http://localhost:5000/api/movies/', newMovie)
 			.then((res) => {
 				props.setNewMovie(res.data)
 			})
