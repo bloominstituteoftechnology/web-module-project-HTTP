@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
 const EditMovieForm = (props) => {
+	const {id} = useParams()
 	const { push } = useHistory();
 
 	const [movie, setMovie] = useState({
@@ -14,6 +15,8 @@ const EditMovieForm = (props) => {
 		metascore: 0,
 		description: ""
 	});
+
+
 	
 	const handleChange = (e) => {
         setMovie({
@@ -24,6 +27,14 @@ const EditMovieForm = (props) => {
 
     const handleSubmit = (e) => {
 		e.preventDefault();
+		axios
+			.put(`http://localhost:5000/api/movies/${id}`, movie)
+			.then((res) => {
+				props.setMovies(res.data)
+				console.log(res.data)
+				push(`/movies/${id}`)
+			})
+		.catch((err) => console.log(err))
 	}
 	
 	const { title, director, genre, metascore, description } = movie;
@@ -60,7 +71,8 @@ const EditMovieForm = (props) => {
 				</div>
 				<div className="modal-footer">			    
 					<input type="submit" className="btn btn-info" value="Save"/>
-					<Link to={`/movies/1`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
+						<Link to={`/movies/1`}>
+							<input type="button" className="btn btn-default" value="Cancel" /></Link>
 				</div>
 			</form>
 		</div>
