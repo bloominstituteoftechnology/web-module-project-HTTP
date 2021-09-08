@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useParams } from "react";
 
 import { Route, Switch, Redirect } from "react-router-dom";
 import MovieList from './components/MovieList';
@@ -17,13 +17,16 @@ const App = (props) => {
 
   useEffect(()=>{
     axios.get('http://localhost:5000/api/movies')
+    // ??? need a little help understanding this
       .then(res => {
-        setMovies(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
+        setMovies(res.data);             
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        }, []);
+        
+      
 
   const deleteMovie = (id)=> {
   }
@@ -45,6 +48,15 @@ const App = (props) => {
         
           <Switch>
             <Route path="/movies/edit/:id">
+            {/* added component here    */}
+            <EditMovieForm
+            // adding current state
+            // ??? need help understanding whats going on here
+            {...props}
+            movies={movies}
+            setMovies={setMovies}
+            />
+            
             </Route>
 
             <Route path="/movies/:id">
