@@ -21,6 +21,15 @@ const Movie = (props) => {
             })
     }, [id]);
 
+    const handleDelete = (e) => {
+        axios.delete(`http://localhost:5000/api/movies/${id}`)
+        .then((res) => {
+            props.deleteMovie(res.data);
+            push("/movies");
+        })
+        .catch((err) => console.log(err));
+    }; 
+
     return(<div className="modal-page col">
         <div className="modal-dialog">
             <div className="modal-content">
