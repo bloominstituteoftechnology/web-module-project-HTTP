@@ -126,4 +126,4 @@ CRUD applications are the foundation of most web applications. Being able to man
 - Removed movie with the passed in id. Returns the deleted movie's id.
 
 ## Rick Mansfield's Pull Req
-[Link]()
+[Link](https://github.com/LambdaSchool/web-module-project-HTTP/pull/74)
