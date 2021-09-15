@@ -1,5 +1,25 @@
 # HTTP / AJAX II React Module Project: Movie CRUD
 
+- [HTTP / AJAX II React Module Project: Movie CRUD](#http--ajax-ii-react-module-project-movie-crud)
+  - [Description](#description)
+  - [Objectives](#objectives)
+  - [Introduction](#introduction)
+  - [Instructions](#instructions)
+    - [Task 1: Project Set Up](#task-1-project-set-up)
+    - [Task 2: Project Requirements](#task-2-project-requirements)
+      - [Editing a Movie](#editing-a-movie)
+      - [Deleting a Movie](#deleting-a-movie)
+      - [Adding a Movie](#adding-a-movie)
+    - [Stretch goals](#stretch-goals)
+    - [Resource: API documentation](#resource-api-documentation)
+      - [GET `http://localhost:5000/api/movies`](#get-httplocalhost5000apimovies)
+      - [GET `http://localhost:5000/api/movies`](#get-httplocalhost5000apimovies-1)
+      - [GET `http://localhost:5000/api/movies/:id`](#get-httplocalhost5000apimoviesid)
+      - [POST `http://localhost:5000/api/movies`](#post-httplocalhost5000apimovies)
+      - [PUT `http://localhost:5000/api/movies/:id`](#put-httplocalhost5000apimoviesid)
+      - [DELETE `http://localhost:5000/api/movies/:id`](#delete-httplocalhost5000apimoviesid)
+## Description
+
 This module explored HTTP methods, REST interfaces, CRUD apps and using put and delete to allow editing and deleting functionality. We also dug into how to pass props to Route connected components and using URL params to get values from an api. In this project, you will practice each of these skills by implement various pieces of functionality in a movie database CRUD app.
 
 ## Objectives
