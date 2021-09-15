@@ -44,12 +44,12 @@ const EditMovieForm = (props) => {
       })
       .catch(err => {
 				console.log("Edit: put error", err);
-			})
+			});
 	}
 	
 	const { title, director, genre, metascore, description } = movie;
 
-    return (
+  return (
 	<div className="col">
 		<div className="modal-content">
 			<form onSubmit={handleSubmit}>
