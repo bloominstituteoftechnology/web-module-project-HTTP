@@ -20,7 +20,7 @@ const Movie = (props) => {
       .catch((err) => {
         console.log(err.response);
       });
-  }, [id]);
+  }, []);
 
   const clickDelete = () => {
     axios
