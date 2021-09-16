@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch, Redirect, useParams } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
 import MovieHeader from './components/MovieHeader';

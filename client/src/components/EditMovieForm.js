@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-
+import { Link, useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const EditMovieForm = (props) => {
-	console.log('EditMovieForm.js ln:8 props', props);
+	// console.log('EditMovieForm.js ln:8 props', props);
 	const { push } = useHistory();
 	const { id } = useParams();
 
@@ -19,13 +17,13 @@ const EditMovieForm = (props) => {
 	useEffect(() => {
 		axios.get(`http://localhost:5000/api/movies/${id}`)
 			.then(res => {
-				setMovie(res.data);
+				setMovie(res.data);//NOT THE SAME AS setMovies
 			})
 			.catch(err => {
 				console.log(err.response);
 			})
 	}, []);
-	
+
 	const handleChange = (e) => {
         setMovie({
             ...movie,
@@ -35,6 +33,12 @@ const EditMovieForm = (props) => {
 
     const handleSubmit = (e) => {
 		e.preventDefault();
+		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
+		.then(res=>{
+			console.log('EditMovieForm.js ln:38 res.data', res.data);
+			props.setMovies(res.data);//NOT THE SAME AS setMovie
+			push(`/movies/${id}`);
+		})
 	}
 	
 	const { title, director, genre, metascore, description } = movie;

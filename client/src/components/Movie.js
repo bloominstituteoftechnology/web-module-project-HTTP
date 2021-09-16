@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
-
 import axios from 'axios';
 
 const Movie = (props) => {
     const { addToFavorites } = props;
-
     const [movie, setMovie] = useState('');
-
     const { id } = useParams();
     const { push } = useHistory();
 
