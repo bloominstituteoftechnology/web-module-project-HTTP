@@ -4,9 +4,6 @@ import axios from 'axios';
 
 const EditMovieForm = (props) => {
 	// console.log('EditMovieForm.js ln:8 props', props);
-	const { push } = useHistory();
-	const { id } = useParams();
-
 	const [movie, setMovie] = useState({
 		title:"",
 		director: "",
@@ -14,6 +11,11 @@ const EditMovieForm = (props) => {
 		metascore: 0,
 		description: ""
 	});
+	const { title, director, genre, metascore, description } = movie;
+	const { push } = useHistory();
+	const { id } = useParams();
+	const { setMovies } = props;
+
 	useEffect(() => {
 		axios.get(`http://localhost:5000/api/movies/${id}`)
 			.then(res => {
@@ -36,12 +38,11 @@ const EditMovieForm = (props) => {
 		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
 		.then(res=>{
 			console.log('EditMovieForm.js ln:38 res.data', res.data);
-			props.setMovies(res.data);//NOT THE SAME AS setMovie
+			setMovies(res.data);//NOT THE SAME AS setMovie
 			push(`/movies/${id}`);
 		})
 	}
 	
-	const { title, director, genre, metascore, description } = movie;
 
     return (
 	<div className="col">

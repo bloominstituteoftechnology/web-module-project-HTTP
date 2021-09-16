@@ -73,22 +73,22 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 * [x] 10. You will once again need to keep the server and state data in sync. In `App.js`, complete the `deleteMovie` method so that it receives an id, filters out any movie with that id and sets state to that resultant movie list.
 
-* [ ] 11. Pass `deleteMovie` into the approprate component.
+* [x] 11. Pass `deleteMovie` into the approprate component.
 
-* [ ] 12. Run `deleteMovie` on the currently selected movie when your delete request is complete and redirect the user to the `/movies` route.
+* [x] 12. Run `deleteMovie` on the currently selected movie when your delete request is complete and redirect the user to the `/movies` route.
 
 #### Adding a Movie
 > *Alright! You ready! Let's see you use the skills of the previous steps to build a crud function from start to finish.*
 
-* [ ] Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state.
+* [ ] 13. Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state.
 
-* [ ] Add in a route that allows access to `AddMovieForm`.
+* [ ] 14. Add in a route that allows access to `AddMovieForm`.
 
-* [ ] Locate the part of the ui that should redirect to your new `AddMovieForm`. Make that button works as expected.
+* [ ] 15. Locate the part of the ui that should redirect to your new `AddMovieForm`. Make that button works as expected.
 
-* [ ] In `AddMovieForm,` add an event handler for form submission. When the form is submitted, run the approprate request for adding a movie with the component's state values.
+* [ ] 16. In `AddMovieForm,` add an event handler for form submission. When the form is submitted, run the approprate request for adding a movie with the component's state values.
 
-* [ ] Make sure your component has access to and runs and modifications needed to global state and redirects to `/movies` after creation.
+* [ ] 17. Make sure your component has access to and runs and modifications needed to global state and redirects to `/movies` after creation.
 
 ### Stretch goals
 - Make the added DeleteMovieModal appear and be reacted to before deletion occurs.
