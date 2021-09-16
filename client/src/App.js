@@ -39,16 +39,21 @@ const App = (props) => {
       </nav>
 
       <div className="container">
-        <MovieHeader/>
+        <MovieHeader setMovies={setMovies}/>
         <div className="row ">
           <FavoriteMovieList favoriteMovies={favoriteMovies}/>
         
           <Switch>
             <Route path="/movies/edit/:id">
+            <EditMovieForm setMovies={setMovies }/>
+            </Route>
+
+            <Route path='/movies/add'>
+              <AddMovieForm setMovies={setMovies}/>
             </Route>
 
             <Route path="/movies/:id">
-              <Movie/>
+              <Movie deleteMovie={deleteMovie}/>
             </Route>
 
             <Route path="/movies">
