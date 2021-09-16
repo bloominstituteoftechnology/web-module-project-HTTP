@@ -5,7 +5,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const EditMovieForm = (props) => {
+	console.log('EditMovieForm.js ln:8 props', props);
 	const { push } = useHistory();
+	const { id } = useParams();
 
 	const [movie, setMovie] = useState({
 		title:"",
