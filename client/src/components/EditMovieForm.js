@@ -16,6 +16,15 @@ const EditMovieForm = (props) => {
 		metascore: 0,
 		description: ""
 	});
+	useEffect(() => {
+		axios.get(`http://localhost:5000/api/movies/${id}`)
+			.then(res => {
+				setMovie(res.data);
+			})
+			.catch(err => {
+				console.log(err.response);
+			})
+	}, []);
 	
 	const handleChange = (e) => {
         setMovie({
