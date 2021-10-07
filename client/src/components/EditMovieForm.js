@@ -8,6 +8,8 @@ const EditMovieForm = (props) => {
 	const { push } = useHistory();
 	const { id } = useParams();
 
+	console.log(props, "edit movie form props")
+
 	const [movie, setMovie] = useState({
 		title: "",
 		director: "",
