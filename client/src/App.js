@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
+import AddMovieForm from "./components/addMovieForm"
 
 import MovieHeader from './components/MovieHeader';
 
@@ -62,6 +63,10 @@ const App = (props) => {
               render={props => <EditMovieForm {...props} movies={movies} setMovies={setMovies} />}
             />
 
+            <Route
+              path="/movies/add/"
+              render={props => <AddMovieForm {...props} movies={movies} setMovies={setMovies} />}
+            />
 
             <Route path="/movies/:id">
               <Movie deleteMovie={deleteMovie} />
