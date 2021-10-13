@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
-const EditMovieForm = (props) => {
+const AddMovieForm = (props) => {
 	const { push } = useHistory();
 	const { id } = useParams();
-	const [movie, setMovie] = useState({
+	const [newMovie, setNewMovie] = useState({
 		title:"",
 		director: "",
 		genre: "",
@@ -16,35 +16,32 @@ const EditMovieForm = (props) => {
 	});
 	
 	const handleChange = (e) => {
-        setMovie({
-            ...movie,
+        setNewMovie({
+            ...newMovie,
             [e.target.name]: e.target.value
         });
     }
 
     const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
+		axios.post(`http://localhost:5000/api/movies`, newMovie)
 		.then(res=> {
 			props.setMovies(res.data)
-			push(`/movies/${id}`)
+			push(`/movies`)
 		})
 		.catch(err=> console.log(err))
 	}
 
-	useEffect(()=> {
-		axios.get(`http://localhost:5000/api/movies/${id}`).then(res=> setMovie(res.data))
-		.catch(err=> console.log(err))
-	}, [])
 	
-	const { title, director, genre, metascore, description } = movie;
+	
+	const { title, director, genre, metascore, description } = newMovie;
 
     return (
 	<div className="col">
 		<div className="modal-content">
 			<form onSubmit={handleSubmit}>
 				<div className="modal-header">						
-					<h4 className="modal-title">Editing <strong>{movie.title}</strong></h4>
+					<h4 className="modal-title">Add Movie <strong>{newMovie.title}</strong></h4>
 				</div>
 				<div className="modal-body">					
 					<div className="form-group">
@@ -70,7 +67,7 @@ const EditMovieForm = (props) => {
 									
 				</div>
 				<div className="modal-footer">			    
-					<input type="submit" className="btn btn-info" value="Save"/>
+					<input type="submit" className="btn btn-info" value="Add"/>
 					<Link to={`/movies/1`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
 				</div>
 			</form>
@@ -78,4 +75,4 @@ const EditMovieForm = (props) => {
 	</div>);
 }
 
-export default EditMovieForm;
+export default AddMovieForm
