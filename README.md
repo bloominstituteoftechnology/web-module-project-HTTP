@@ -29,45 +29,45 @@ CRUD applications are the foundation of most web applications. Being able to man
 #### Editing a Movie
 > *Let's start by walking through the process of adding the routing, component and service calls need for resource updating*
 
-* [ ] First, we need to be able to navigate to the edit movie component. In App.js, add in the `<EditMovieForm> `component to the supplied edit route.
+* [x] First, we need to be able to navigate to the edit movie component. In App.js, add in the `<EditMovieForm> `component to the supplied edit route.
 
-* [ ] Next, we need to grab the id being passed into the component through the url. Use the `useParams` hook to get the id value.
+* [x] Next, we need to grab the id being passed into the component through the url. Use the `useParams` hook to get the id value.
 
-* [ ] We need to be able to load in the current movie's attributes into our local form state. When `EditMovieForm` mount, retrieve our current id's movie from the api and save the data returned to local state.
+* [x] We need to be able to load in the current movie's attributes into our local form state. When `EditMovieForm` mount, retrieve our current id's movie from the api and save the data returned to local state.
 
-* [ ] At this point, nothing happens when the edit form is submitted. Add in the api call needed to update the server with our updated movie data.
+* [x] At this point, nothing happens when the edit form is submitted. Add in the api call needed to update the server with our updated movie data.
 
-* [ ] Don't forget to make sure that your server data and your local state are in sync! Make any changes the edit route needed to give the edit form access to App's `setMovies` method.
+* [x] Don't forget to make sure that your server data and your local state are in sync! Make any changes the edit route needed to give the edit form access to App's `setMovies` method.
 
-* [ ] Now that we have access to `setMovies`, made sure the updated list of movies is saved to our global state.
+* [x] Now that we have access to `setMovies`, made sure the updated list of movies is saved to our global state.
 
-* [ ] Redirect the user to the currently edited movie's individual info page.
+* [x] Redirect the user to the currently edited movie's individual info page.
 
 #### Deleting a Movie
 > *You added in a CRUD feature! Good job! Now let's get deleted squared away...*
 
-* [ ] Identify the component that holds the "button" needed for deletion. Add an event handler to that button.
+* [x] Identify the component that holds the "button" needed for deletion. Add an event handler to that button.
 
-* [ ] Build an event handler that makes a request to delete the currently viewed movie. Observe what is returned from the request.
+* [x] Build an event handler that makes a request to delete the currently viewed movie. Observe what is returned from the request.
 
-* [ ] You will once again need to keep the server and state data in sync. In `App.js`, complete the `deleteMovie` method so that it receives an id, filters out any movie with that id and sets state to that resultant movie list.
+* [x] You will once again need to keep the server and state data in sync. In `App.js`, complete the `deleteMovie` method so that it receives an id, filters out any movie with that id and sets state to that resultant movie list.
 
-* [ ] Pass `deleteMovie` into the approprate component.
+* [x] Pass `deleteMovie` into the approprate component.
 
-* [ ] Run `deleteMovie` on the currently selected movie when your delete request is complete and redirect the user to the `/movies` route.
+* [x] Run `deleteMovie` on the currently selected movie when your delete request is complete and redirect the user to the `/movies` route.
 
 #### Adding a Movie
 > *Alright! You ready! Let's see you use the skills of the previous steps to build a crud function from start to finish.*
 
-* [ ] Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state.
+* [x] Use `EditMovieForm.js` as a model to build an `AddMovieForm` component from scratch. The component should hold all the attributes of a new movie in local state.
 
-* [ ] Add in a route that allows access to `AddMovieForm`.
+* [x] Add in a route that allows access to `AddMovieForm`.
 
-* [ ] Locate the part of the ui that should redirect to your new `AddMovieForm`. Make that button works as expected.
+* [x] Locate the part of the ui that should redirect to your new `AddMovieForm`. Make that button works as expected.
 
-* [ ] In `AddMovieForm,` add an event handler for form submission. When the form is submitted, run the approprate request for adding a movie with the component's state values.
+* [x] In `AddMovieForm,` add an event handler for form submission. When the form is submitted, run the approprate request for adding a movie with the component's state values.
 
-* [ ] Make sure your component has access to and runs and modifications needed to global state and redirects to `/movies` after creation.
+* [x] Make sure your component has access to and runs and modifications needed to global state and redirects to `/movies` after creation.
 
 ### Stretch goals
 - Make the added DeleteMovieModal appear and be reacted to before deletion occurs.
