@@ -9,7 +9,7 @@ const MovieHeader = () => {
           <h2>IMDB Movie Database</h2>
         </div>
         <div className="col-sm-6">
-          <Link to="/" className="btn btn-success">
+          <Link to={`/movies/add/`} className="btn btn-success">
             <i className="material-icons">&#xE147;</i>{" "}
             <span>Add New Movie</span>
           </Link>
