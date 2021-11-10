@@ -9,7 +9,7 @@ const DeleteMovieModal = (props) => {
         handleDelete();
         push('/movies')
     }
-    
+
     const tog = ()=>{
         handleToggle();
     }
@@ -34,5 +34,6 @@ const DeleteMovieModal = (props) => {
         </div>
     </div>)
 }
+
 
 export default DeleteMovieModal;
