@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 import axios from 'axios';
+import { response } from 'express';
 
 const EditMovieForm = (props) => {
 	const { push } = useHistory();
@@ -36,8 +37,18 @@ const EditMovieForm = (props) => {
         });
     }
 
+	// handling submission for editing movies 
     const handleSubmit = (e) => {
 		e.preventDefault();
+
+		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
+			.then(response => {
+				props.setMovies(response.data);
+				push(`/movies/${id}`);
+
+			}).catch(error => {
+				console.error(error);
+			})
 	}
 	
 	const { title, director, genre, metascore, description } = movie;
@@ -74,7 +85,7 @@ const EditMovieForm = (props) => {
 				</div>
 				<div className="modal-footer">			    
 					<input type="submit" className="btn btn-info" value="Save"/>
-					<Link to={`/movies/1`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
+					<Link to={`/movies/${id}`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
 				</div>
 			</form>
 		</div>

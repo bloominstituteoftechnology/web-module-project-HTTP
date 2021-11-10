@@ -35,7 +35,7 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 * [x] We need to be able to load in the current movie's attributes into our local form state. When `EditMovieForm` mount, retrieve our current id's movie from the api and save the data returned to local state.
 
-* [ ] At this point, nothing happens when the edit form is submitted. Add in the api call needed to update the server with our updated movie data.
+* [x] At this point, nothing happens when the edit form is submitted. Add in the api call needed to update the server with our updated movie data.
 
 * [ ] Don't forget to make sure that your server data and your local state are in sync! Make any changes the edit route needed to give the edit form access to App's `setMovies` method.
 
