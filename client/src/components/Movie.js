@@ -48,6 +48,7 @@ const Movie = (props) => {
             console.error(err)
         })
     }
+   
 
     return(<div className="modal-page col">
         <div className="modal-dialog">
@@ -78,7 +79,7 @@ const Movie = (props) => {
                         </section>
                         
                         <section>
-                            <span className="m-2 btn btn-dark">Favorite</span>
+                            <span onClick={()=>addToFavorites(movie)} className="m-2 btn btn-dark">Favorite</span>
                             <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
                             <span className="delete"onClick={()=>handleDelete(id)} ><input type="button" className="m-2 btn btn-danger" value="Delete"/></span>
                         </section>
