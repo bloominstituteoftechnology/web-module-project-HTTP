@@ -1,6 +1,9 @@
+import axios from 'axios';
 import React from 'react';
 
 const DeleteMovieModal = () => {
+
+
     return (<div id="deleteMovieModal">
         <div className="modal-dialog">
             <div className="modal-content">
