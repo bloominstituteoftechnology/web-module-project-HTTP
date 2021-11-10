@@ -35,5 +35,4 @@ const DeleteMovieModal = (props) => {
     </div>)
 }
 
-
 export default DeleteMovieModal;
