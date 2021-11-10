@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
 import axios from 'axios';
-import { response } from 'express';
 
-const EditMovieForm = (props) => {
+const AddMovieForm = (props) => {
 	const { push } = useHistory();
-
-	// grabbing the ID being passed to the component using useParams
-	const { id } = useParams();
 
 	const [movie, setMovie] = useState({
 		title:"",
@@ -18,33 +13,22 @@ const EditMovieForm = (props) => {
 		metascore: 0,
 		description: ""
 	});
-
-	// retrieving movie's current ID from the api 
-	useEffect(() => {
-		axios.get(`http://localhost:5000/api/movies/${id}`)
-			.then(response => {
-				setMovie(response.data);
-
-			}).catch(error => {
-				console.error(error)
-			})
-	}, [id])
 	
-	const handleChange = (e) => {
+	const handleChange = event => {
         setMovie({
             ...movie,
-            [e.target.name]: e.target.value
+            [event.target.name]: event.target.value
         });
     }
 
 	// handling submission for editing movies 
-    const handleSubmit = (e) => {
-		e.preventDefault();
+    const handleSubmit = event => {
+		event.preventDefault();
 
-		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
+		axios.put(`http://localhost:5000/api/movies/`, movie)
 			.then(response => {
 				props.setMovies(response.data);
-				push(`/movies/${id}`);
+				push(`/movies`);
 
 			}).catch(error => {
 				console.error(error);
@@ -85,11 +69,11 @@ const EditMovieForm = (props) => {
 				</div>
 				<div className="modal-footer">			    
 					<input type="submit" className="btn btn-info" value="Save"/>
-					<Link to={`/movies/${id}`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
+					<Link to={`/movies`}><input type="button" className="btn btn-default" value="Cancel"/></Link>
 				</div>
 			</form>
 		</div>
 	</div>);
 }
 
-export default EditMovieForm;
+export default AddMovieForm;
