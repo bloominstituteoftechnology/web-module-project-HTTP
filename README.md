@@ -74,7 +74,7 @@ CRUD applications are the foundation of most web applications. Being able to man
 - Add in `addToFavorites` functionality. When the favorite button is pushed in the `Movie` component, make sure that when the favorite button is pushed, the id and name of the currently viewed into the favorite state slice in `App.js.`
 - For extra credit, ensure that only unique movies can be added as favorites. Consider the `.find` method for arrays.
 - Add in some Style!
-
+Testing!!
 ### Resource: API documentation 
 
 #### GET `http://localhost:5000/api/movies`
