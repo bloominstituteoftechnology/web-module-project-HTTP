@@ -43,8 +43,10 @@ const App = (props) => {
         <div className="row ">
           <FavoriteMovieList favoriteMovies={favoriteMovies}/>
         
+          {/* Edit Movie Component */}
           <Switch>
             <Route path="/movies/edit/:id">
+              <EditMovieForm setMovies = { setMovies } />
             </Route>
 
             <Route path="/movies/:id">
