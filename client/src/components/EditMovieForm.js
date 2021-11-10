@@ -7,6 +7,9 @@ import axios from 'axios';
 const EditMovieForm = (props) => {
 	const { push } = useHistory();
 
+	// grabbing the ID being passed to the component using useParams
+	const { id } = useParams();
+
 	const [movie, setMovie] = useState({
 		title:"",
 		director: "",
@@ -14,6 +17,17 @@ const EditMovieForm = (props) => {
 		metascore: 0,
 		description: ""
 	});
+
+	// retrieving movie's current ID from the api 
+	useEffect(() => {
+		axios.get(`http://localhost:5000/api/movies/${id}`)
+			.then(response => {
+				setMovie(response.data);
+
+			}).catch(error => {
+				console.error(error)
+			})
+	}, [id])
 	
 	const handleChange = (e) => {
         setMovie({
