@@ -10,7 +10,7 @@ import EditMovieForm from './components/EditMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
 
 import axios from 'axios';
-import AddMovie from "./components/AddMovie";
+import AddMovieForm from "./components/AddMovieForm";
 
 const App = (props) => {
   const [movies, setMovies] = useState([]);
@@ -40,7 +40,7 @@ const App = (props) => {
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark">
-        <span className="navbar-brand" ><img width="40px" alt="" src="./Lambda-Logo-Red.png"/> HTTP / CRUD Module Project ∞</span>
+        <span className="navbar-brand" ><img width="40px" alt="" src="./Lambda-Logo-Red.png"/> HTTP / CRUD Module Project </span>
       </nav>
 
       <div className="container">
@@ -55,6 +55,10 @@ const App = (props) => {
 
             <Route path="/movies/:id">
               <Movie/>
+            </Route>
+
+            <Route path="/movies/add">
+              <AddMovie setMovies = { setMovies } />
             </Route>
 
             <Route path="/movies">
