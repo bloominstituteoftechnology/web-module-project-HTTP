@@ -16,24 +16,24 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 ## Instructions
 ### Task 1: Project Set Up
-* [ ] Create a forked copy of this project.
-* [ ] Clone your OWN version of the repository in your terminal
-* [ ] cd into the project base directory `cd web-module-project-HTTP`
-* [ ] Download server dependencies by running `npm install`
-* [ ] Run the local web server by running `node server.js`
-* [ ] Open a new terminal window and cd into the client code `cd client`
-* [ ] Download project dependencies by running `npm install`
-* [ ] Start up the app using `npm start`
+* [x] Create a forked copy of this project.
+* [x] Clone your OWN version of the repository in your terminal
+* [x] cd into the project base directory `cd web-module-project-HTTP`
+* [x] Download server dependencies by running `npm install`
+* [x] Run the local web server by running `node server.js`
+* [x] Open a new terminal window and cd into the client code `cd client`
+* [x] Download project dependencies by running `npm install`
+* [x] Start up the app using `npm start`
 
 ### Task 2: Project Requirements
 #### Editing a Movie
 > *Let's start by walking through the process of adding the routing, component and service calls need for resource updating*
 
-* [ ] First, we need to be able to navigate to the edit movie component. In App.js, add in the `<EditMovieForm> `component to the supplied edit route.
+* [x] First, we need In App.js, add in the `<EditMovieForm> `component to the supplied edit route.
 
-* [ ] Next, we need to grab the id being passed into the component through the url. Use the `useParams` hook to get the id value.
+* [x] Next, we need to grab the id being passed into the component through the url. Use the `useParams` hook to get the id value.
 
-* [ ] We need to be able to load in the current movie's attributes into our local form state. When `EditMovieForm` mount, retrieve our current id's movie from the api and save the data returned to local state.
+* [x] We need to be able to load in the current movie's attributes into our local form state. When `EditMovieForm` mount, retrieve our current id's movie from the api and save the data returned to local state.
 
 * [ ] At this point, nothing happens when the edit form is submitted. Add in the api call needed to update the server with our updated movie data.
 

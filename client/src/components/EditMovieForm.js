@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const EditMovieForm = (props) => {
+	const { id } = useParams();
 	const { push } = useHistory();
 
 	const [movie, setMovie] = useState({
@@ -21,10 +22,29 @@ const EditMovieForm = (props) => {
             [e.target.name]: e.target.value
         });
     }
+  //3. Get the data for the item we are editing.
+  useEffect(()=> {
+    axios.get(`http://localhost:5000/movies/${id}`)
+      .then(resp=> {
+        setMovie(resp.data);
+      })
+      .catch(err=> {
+        console.log(err);
+      })
+  }, []);
 
     const handleSubmit = (e) => {
+		console.log("clicked")
 		e.preventDefault();
-	}
+		axios.get(`http://localhost:5000/movies/${id}`, movie)
+		.then(resp=> {
+			console.log(resp)
+		props.setMovie(resp.data);
+        push(`/movies/${id}`);
+		}).catch(err=>{
+			console.log(err)
+		})}
+	
 	
 	const { title, director, genre, metascore, description } = movie;
 
@@ -54,7 +74,7 @@ const EditMovieForm = (props) => {
 					</div>		
 					<div className="form-group">
 						<label>Description</label>
-						<textarea value={description} onChange={handleChange} name="description" className="form-control"></textarea>
+						<textarea value={description} onChange={handleChange} name="\" className="form-control"></textarea>
 					</div>
 									
 				</div>
