@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, useHistory} from "react-router-dom";
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
 
@@ -8,12 +8,15 @@ import MovieHeader from './components/MovieHeader';
 
 import EditMovieForm from './components/EditMovieForm';
 import FavoriteMovieList from './components/FavoriteMovieList';
-
+import AddMovieForm from "./components/AddMovieForm";
 import axios from 'axios';
+import DeleteMovieModal from "./components/DeleteMovieModal";
 
 const App = (props) => {
+  
   const [movies, setMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
+  const { push } = useHistory();
 
   useEffect(()=>{
     axios.get('http://localhost:5000/api/movies')
@@ -21,15 +24,36 @@ const App = (props) => {
         setMovies(res.data);
       })
       .catch(err => {
-        console.log(err);
+        console.log('this is error', err);
       });
   }, []);
 
-  const deleteMovie = (id)=> {
+  const deleteMovie = (num)=> {
+    axios.delete(`http://localhost:5000/api/movies/${num}`)
+      .then(res => {
+        setMovies(
+          movies.filter(movie=>{
+            return movie.id !== res.data
+          })
+        )
+        const newFav= favoriteMovies.filter(mov=>{
+          return res.data !== mov.id
+        })
+        setFavoriteMovies(newFav)
+        })
+      .catch(err => {
+        console.log('this is error', err);
+      });
   }
 
   const addToFavorites = (movie) => {
-    
+    const newFav= favoriteMovies.filter(mov=>{
+      return movie.id !== mov.id
+    })
+    setFavoriteMovies([
+      movie,
+      ...newFav
+    ])
   }
 
   return (
@@ -45,12 +69,20 @@ const App = (props) => {
         
           <Switch>
             <Route path="/movies/edit/:id">
+              <EditMovieForm setMovies={setMovies}/>
+            </Route>
+
+            <Route path="/movies/delete">
+              <DeleteMovieModal />
             </Route>
 
             <Route path="/movies/:id">
-              <Movie/>
+              <Movie deleteMovie={deleteMovie} addToFavorites={addToFavorites}/>
             </Route>
 
+            <Route path="/addmovie">
+              <AddMovieForm setMovies={setMovies}/>
+            </Route>
             <Route path="/movies">
               <MovieList movies={movies}/>
             </Route>
