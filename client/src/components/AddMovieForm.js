@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 
 import axios from 'axios';
 
-const EditMovieForm = (props) => {
-	const { id } = useParams();
+const AddMovieForm = (props) => {
 	const { push } = useHistory();
-
-	const [movie, setMovie] = useState({
+    const {setMovies} = props;
+	const [newMovie, setNewMovie] = useState({
 		title:"",
 		director: "",
 		genre: "",
@@ -17,43 +16,42 @@ const EditMovieForm = (props) => {
 	});
 	
 	const handleChange = (e) => {
-        setMovie({
-            ...movie,
+        setNewMovie({
+            ...newMovie,
             [e.target.name]: e.target.value
         });
     }
-  //3. Get the data for the item we are editing.
-  useEffect(()=> {
-    axios.get(`http://localhost:5000/api/movies/${id}`)
-      .then(resp=> {
-        setMovie(resp.data);
-      })
-      .catch(err=> {
-        console.log(err);
-      })
-  }, []);
+	useEffect(() => {
+		axios.get(`http://localhost:5000/api/movies`)
+		.then(res => {
+			setNewMovie(res.data);
+		})
+		.catch(err => {
+			console.log(err)
+		})
+	}, [])
+  
 
     const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
+		axios.post(`http://localhost:5000/api/movies`, newMovie)
 		.then(resp=> {
-
-			setMovie(resp.data);
-			push(`/movies/${id}`);
+            setMovies(resp.data);
+			push(`/movies`);
 
 		}).catch(err=>{
 			console.log(err)
 		})}
 	
 	
-	const { title, director, genre, metascore, description } = movie;
+	const { title, director, genre, metascore, description } = newMovie;
 
     return (
 	<div className="col">
 		<div className="modal-content">
 			<form onSubmit={handleSubmit}>
 				<div className="modal-header">						
-					<h4 className="modal-title">Editing <strong>{movie.title}</strong></h4>
+					<h4 className="modal-title">Add movie <strong>{newMovie.title}</strong></h4>
 				</div>
 				<div className="modal-body">					
 					<div className="form-group">
@@ -87,4 +85,4 @@ const EditMovieForm = (props) => {
 	</div>);
 }
 
-export default EditMovieForm;
+export default AddMovieForm;
