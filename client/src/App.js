@@ -13,6 +13,7 @@ import axios from 'axios';
 import DeleteMovieModal from "./components/DeleteMovieModal";
 
 const App = (props) => {
+  
   const [movies, setMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
   const { push } = useHistory();
@@ -35,16 +36,24 @@ const App = (props) => {
             return movie.id !== res.data
           })
         )
-        push(`/movies`)
-      })
+        const newFav= favoriteMovies.filter(mov=>{
+          return res.data !== mov.id
+        })
+        setFavoriteMovies(newFav)
+        })
       .catch(err => {
         console.log('this is error', err);
       });
   }
 
-  const addToFavorites = (e) => {
-    e.preventDefault();
-	
+  const addToFavorites = (movie) => {
+    const newFav= favoriteMovies.filter(mov=>{
+      return movie.id !== mov.id
+    })
+    setFavoriteMovies([
+      movie,
+      ...newFav
+    ])
   }
 
   return (
@@ -68,7 +77,7 @@ const App = (props) => {
             </Route>
 
             <Route path="/movies/:id">
-              <Movie deleteMovie={deleteMovie}/>
+              <Movie deleteMovie={deleteMovie} addToFavorites={addToFavorites}/>
             </Route>
 
             <Route path="/addmovie">

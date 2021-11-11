@@ -27,6 +27,9 @@ const Movie = (props) => {
     const handleToggle=()=>{
         setIsToggled(!isToggled)
     }
+    const handleFav=()=>{
+        addToFavorites(movie)
+    }
 
     
 
@@ -59,7 +62,7 @@ const Movie = (props) => {
                         </section>
                         {!isToggled &&
                         <section>
-                            <span className="m-2 btn btn-dark">Favorite</span>
+                            <span onClick={handleFav}className="m-2 btn btn-dark">Favorite</span>
                             <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
                             <span className="delete"><input onClick={handleToggle}type="button" className="m-2 btn btn-danger" value="Delete"/></span>
                         </section>
