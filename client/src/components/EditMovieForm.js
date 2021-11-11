@@ -24,7 +24,7 @@ const EditMovieForm = (props) => {
     }
   //3. Get the data for the item we are editing.
   useEffect(()=> {
-    axios.get(`http://localhost:5000/movies/${id}`)
+    axios.get(`http://localhost:5000/api/movies/${id}`)
       .then(resp=> {
         setMovie(resp.data);
       })
@@ -34,13 +34,13 @@ const EditMovieForm = (props) => {
   }, []);
 
     const handleSubmit = (e) => {
-		console.log("clicked")
 		e.preventDefault();
-		axios.get(`http://localhost:5000/movies/${id}`, movie)
+		axios.put(`http://localhost:5000/api/movies/${id}`, movie)
 		.then(resp=> {
-			console.log(resp)
-		props.setMovie(resp.data);
+
+		setMovie(resp.data);
         push(`/movies/${id}`);
+
 		}).catch(err=>{
 			console.log(err)
 		})}
