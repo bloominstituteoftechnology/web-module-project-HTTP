@@ -14,17 +14,18 @@ import AddMovieForm from "./components/AddMovieForm";
 
 const App = (props) => {
   const [movies, setMovies] = useState([]);
+  console.log('☃︎', movies);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
-  useEffect(() => {
-    axios.get('http://localhost:3000/api/movies')
-      .then(r => {
-        setMovies(r.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios.get('http://localhost:3003/api/movies')
+  //     .then('☠︎', r => {
+  //       setMovies(r.data);
+  //     })
+  //     .catch(err => {
+  //       console.log(err);
+  //     });
+  // }, []);
 
   const deleteMovie = (id) => {
     setMovies(
