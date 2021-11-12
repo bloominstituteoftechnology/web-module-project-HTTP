@@ -14,7 +14,7 @@ import AddMovieForm from "./components/AddMovieForm";
 
 const App = (props) => {
   const [movies, setMovies] = useState([]);
-  console.log('☃︎', movies);
+  console.log('☃︎', '☠︎', props, movies);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   // useEffect(() => {
