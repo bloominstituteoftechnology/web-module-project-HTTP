@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const AddMovieForm = (props) => {
-
+console.log(props);
   const { push } = useHistory();
+
+  useEffect(() => {
+	axios.get(`http://localhost:3002/api/movies/${id}`)
+	.then(res => {
+		setNewMovie(res.data);
+	})
+	.catch(err => console.log(err));
+}, [])
 
 	const [movie, setMovie] = useState({
 		title:'',
@@ -24,12 +32,12 @@ const AddMovieForm = (props) => {
 
   const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.post(`http://localhost:5000/api/movies`, movie)
-      .then(res=> {
+		axios.post(`http://localhost:3002/api/movies`, movie)
+      .then(res => {
         props.setMovies(res.data);
 				push(`/movies`);
       })
-      .catch(err=> {
+      .catch(err => {
         console.log(err.response);
       });
   };
