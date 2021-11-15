@@ -16,7 +16,7 @@ const App = (props) => {
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/api/movies')
+    axios.get('http://localhost:5001/api/movies')
       .then(res => {
         setMovies(res.data);
       })
@@ -35,7 +35,7 @@ const App = (props) => {
   return (
     <div>
       <nav className="navbar navbar-dark bg-dark">
-        <span className="navbar-brand" ><img width="40px" alt="" src="./Lambda-Logo-Red.png"/> HTTP / CRUD Module Project</span>
+        <span className="navbar-brand" > HTTP / CRUD Module Project</span>
       </nav>
 
       <div className="container">
