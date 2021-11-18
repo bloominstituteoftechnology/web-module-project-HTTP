@@ -133,17 +133,6 @@ table.table .avatar {
   justify-content: space-between;
 }
 
-#deleteEmployeeModal {
-	position: absolute;
-	top: 40%;
-	left: 50%;
-  	transform: translate(-50%, -50%);
-}
-
-#deleteEmployeeModal .modal-dialog {
-	box-shadow: #00000099 3px 3px 17px;
-}
-
 .savedContainer {
 	display: flex;
 	flex-direction: column;
