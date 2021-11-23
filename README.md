@@ -12,6 +12,36 @@ CRUD applications are the foundation of most web applications. Being able to man
 
 ![Movie DB Example](project-goals.gif)
 
+### Resource: API documentation 
+
+#### GET `http://localhost:9000/api/movies`
+- Retrieves all the Movies with the following formatting:
+```
+[{
+  id: 5,
+  title: 'Tombstone',
+  director: 'George P. Cosmatos',
+  metascore: 89,
+  genre: "Drama",
+  description: : "A successful lawman's plans to retire anonymously in Tombstone, Arizona are disrupted by the kind of outlaws he was famous for eliminating."
+}]
+```
+#### GET `http://localhost:9000/api/movies`
+- Retrieves all movies on the server.
+
+#### GET `http://localhost:9000/api/movies/:id`
+- Retrieves a movie with the passed value as id.
+
+#### POST `http://localhost:9000/api/movies`
+- Adds the movie passed in through body to the server movies list. Returns updated movies list.
+
+#### PUT `http://localhost:9000/api/movies/:id`
+- Replaced the movie with the passed in id with data passed in through body. Returns update movies list.
+
+#### DELETE `http://localhost:9000/api/movies/:id`
+- Removed movie with the passed in id. Returns the deleted movie's id.
+
+
 ***Make sure to complete your tasks one at a time and complete test each task before proceeding forward.***
 
 ## Instructions
@@ -75,31 +105,8 @@ CRUD applications are the foundation of most web applications. Being able to man
 - For extra credit, ensure that only unique movies can be added as favorites. Consider the `.find` method for arrays.
 - Add in some Style!
 
-### Resource: API documentation 
-
-#### GET `http://localhost:9000/api/movies`
-- Retrieves all the Movies with the following formatting:
-```
-[{
-  id: 5,
-  title: 'Tombstone',
-  director: 'George P. Cosmatos',
-  metascore: 89,
-  genre: "Drama",
-  description: : "A successful lawman's plans to retire anonymously in Tombstone, Arizona are disrupted by the kind of outlaws he was famous for eliminating."
-}]
-```
-#### GET `http://localhost:9000/api/movies`
-- Retrieves all movies on the server.
-
-#### GET `http://localhost:9000/api/movies/:id`
-- Retrieves a movie with the passed value as id.
-
-#### POST `http://localhost:9000/api/movies`
-- Adds the movie passed in through body to the server movies list. Returns updated movies list.
-
-#### PUT `http://localhost:9000/api/movies/:id`
-- Replaced the movie with the passed in id with data passed in through body. Returns update movies list.
-
-#### DELETE `http://localhost:9000/api/movies/:id`
-- Removed movie with the passed in id. Returns the deleted movie's id.
+### Submission Format
+- [ ] If this is your first time connecting a submission, authorize your github account within the codegrade assignment.
+- [ ] Connect your fork to Codegrade using the "Connect Git" button.
+- [ ] Find your newly created fork from the list and push your work to main.
+- [ ] Check this video for details: www.youtube.com/watch?v=fC2BO7dI6IQ
