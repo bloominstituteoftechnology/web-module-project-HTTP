@@ -100,7 +100,7 @@ CRUD applications are the foundation of most web applications. Being able to man
 * [ ] Make sure your component has access to and runs and modifications needed to global state and redirects to `/movies` after creation.
 
 ### Stretch goals
-- Make the added DeleteMovieModal appear and be reacted to before deletion occurs.
+- Make the added DeleteMovieModal appear and be executed before a deletion occurs.
 - Add in `addToFavorites` functionality. When the favorite button is pushed in the `Movie` component, make sure that when the favorite button is pushed, the id and name of the currently viewed into the favorite state slice in `App.js.`
 - For extra credit, ensure that only unique movies can be added as favorites. Consider the `.find` method for arrays.
 - Add in some Style!
