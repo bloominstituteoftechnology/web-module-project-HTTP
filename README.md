@@ -50,9 +50,6 @@ CRUD applications are the foundation of most web applications. Being able to man
 * [ ] Clone your OWN version of the repository in your terminal
 * [ ] cd into the project base directory `cd web-module-project-HTTP`
 * [ ] Download server dependencies by running `npm install`
-* [ ] Run the local web server by running `node server.js`
-* [ ] Open a new terminal window and cd into the client code `cd client`
-* [ ] Download project dependencies by running `npm install`
 * [ ] Start up the app using `npm start`
 
 ### Task 2: Project Requirements
