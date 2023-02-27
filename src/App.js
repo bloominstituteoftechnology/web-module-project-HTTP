@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import MovieList from './components/MovieList';
 import Movie from './components/Movie';
 
@@ -14,7 +14,7 @@ const App = (props) => {
   const [movies, setMovies] = useState([]);
   const [favoriteMovies, setFavoriteMovies] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     axios.get('http://localhost:9000/api/movies')
       .then(res => {
         setMovies(res.data);
@@ -24,11 +24,11 @@ const App = (props) => {
       });
   }, []);
 
-  const deleteMovie = (id)=> {
+  const deleteMovie = (id) => {
   }
 
   const addToFavorites = (movie) => {
-    
+
   }
 
   return (
@@ -38,26 +38,19 @@ const App = (props) => {
       </nav>
 
       <div className="container">
-        <MovieHeader/>
+        <MovieHeader />
         <div className="row ">
-          <FavoriteMovieList favoriteMovies={favoriteMovies}/>
-        
-          <Switch>
-            <Route path="/movies/edit/:id">
-            </Route>
+          <FavoriteMovieList favoriteMovies={favoriteMovies} />
 
-            <Route path="/movies/:id">
-              <Movie/>
-            </Route>
+          <Routes>
+            <Route path="movies/edit/:id" />
 
-            <Route path="/movies">
-              <MovieList movies={movies}/>
-            </Route>
+            <Route path="movies/:id" />
 
-            <Route path="/">
-              <Redirect to="/movies"/>
-            </Route>
-          </Switch>
+            <Route path="movies" element={<MovieList movies={movies} />} />
+
+            <Route path="/" element={<Navigate to="/movies" />} />
+          </Routes>
         </div>
       </div>
     </div>
@@ -66,4 +59,3 @@ const App = (props) => {
 
 
 export default App;
-
