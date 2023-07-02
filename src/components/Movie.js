@@ -11,6 +11,16 @@ const Movie = (props) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const handleDelete = () => {
+    axios
+      .delete(`http://localhost:9000/api/movies/${id}`)
+      .then((res) => {
+        props.deleteMovie(id);
+        navigate("/movies");
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     axios
       .get(`http://localhost:9000/api/movies/${id}`)
@@ -71,6 +81,7 @@ const Movie = (props) => {
                 <span className="delete">
                   <input
                     type="button"
+                    onClick={handleDelete}
                     className="m-2 btn btn-danger"
                     value="Delete"
                   />
