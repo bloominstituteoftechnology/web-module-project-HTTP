@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
@@ -12,7 +13,8 @@ const Movie = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`http://localhost:9000/api/movies/${id}`)
+    axios
+    .get(`http://localhost:9000/api/movies/${id}`)
       .then(res => {
         setMovie(res.data);
       })
