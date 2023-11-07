@@ -25,10 +25,14 @@ const App = (props) => {
   }, []);
 
   const deleteMovie = (id) => {
+    // Make a DELETE request using Axios
+    // On success update the movies list in state
+    // and navigate the user to /movies
+    // Hand this function down to the correct component
   }
 
   const addToFavorites = (movie) => {
-
+    // Stretch goal, see the README
   }
 
   return (
