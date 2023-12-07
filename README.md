@@ -37,7 +37,7 @@ You should now have your app running in Chrome on `http://localhost:3000`
 >
 > *Let's start by walking through the process of adding the routing, component and service calls need for resource updating*
 
-- [ ] Add the `Movie` component as the element to render in the route for the `movies/:id` path. This will fix the "View" button on the `/movies` path.
+- [ ] Add the `Movie` component as the element to render in the route for the `movies/:id` path. This will fix the "View" button on the `movies` path.
 
 - [ ] We need to be able to navigate to the edit movie component. In App.js, add in the `EditMovieForm`component to the supplied edit route.
 
